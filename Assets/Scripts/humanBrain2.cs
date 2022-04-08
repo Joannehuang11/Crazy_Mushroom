@@ -108,6 +108,14 @@ public class humanBrain2 : MonoBehaviour
     }
 
     //function
+
+    void OnCollisionEnter(Collision collision)
+    {
+        randRotation = Random.Range(-60.0f, 60.0f);
+        transform.Rotate(new Vector3(0, randRotation, 0));
+    }
+
+
     void eatMagicMush()
     {
         Vector3 p1 = transform.position;
@@ -276,7 +284,7 @@ public class humanBrain2 : MonoBehaviour
             this.GetComponent<MeshRenderer>().enabled = false;
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).GetComponent<MeshRenderer>().enabled = false;
+                Destroy(this.gameObject);
             }
         }
     }

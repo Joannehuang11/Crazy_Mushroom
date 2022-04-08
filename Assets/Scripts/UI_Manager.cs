@@ -7,6 +7,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject RainFall;
     public Light DirectLight;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class UI_Manager : MonoBehaviour
     {
         RainFall.SetActive(true); 
         DirectLight.intensity = 0.5f;
+
     }
 
     public void changeToSun()

@@ -17,6 +17,9 @@ public class humanManager : MonoBehaviour
     GameObject[] allDumbHuman = new GameObject[] { };
     GameObject[] allHuman = new GameObject[] { };
 
+    //List<GameObject> allHumans_list = new List<GameObject>();
+    //List<GameObject> smartHumans_list = new List<GameObject>();
+
 
     //UI
     public string populationString;
@@ -58,8 +61,12 @@ public class humanManager : MonoBehaviour
             GameObject newHumanA = Instantiate(HumanAObject, pos, Quaternion.identity);
             newHumanA.name = "Human_A";
             newHumanA.gameObject.tag = "HumanA";
-            //newHumanA.gameObject.tag = "Human";
+            newHumanA.gameObject.tag = "Human";
             allNorHuman = GameObject.FindGameObjectsWithTag("HumanA");
+
+            //allHumans_list.Add(newHumanA);
+
+            //if new human . knowledge > 90 { smartHumans_list.add(new human)}
         }
     }
 
@@ -83,7 +90,6 @@ public class humanManager : MonoBehaviour
                 minHealth = allDumbHuman[i].GetComponent<humanBrainDumb>().humanHealth;
             }
         }
-
     }
 
     void initiateHuman_Born()
