@@ -204,7 +204,6 @@ GameObject:
   - component: {fileID: 451275840552420123}
   - component: {fileID: 451275840552420122}
   - component: {fileID: 451275840552420121}
-  - component: {fileID: 451275840552420117}
   - component: {fileID: 6063490946496069877}
   m_Layer: 0
   m_Name: HumanA
@@ -293,22 +292,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &451275840552420117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451275840552420120}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704b5972970e854458fe960d481eb90f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myState: 0
-  speed: 0.001
-  humanHealth: 50
-  humanAPrefab: {fileID: 0}
 --- !u!114 &6063490946496069877
 MonoBehaviour:
   m_ObjectHideFlags: 0

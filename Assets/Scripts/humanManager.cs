@@ -7,12 +7,15 @@ public class humanManager : MonoBehaviour
 {
     //Variables
     public GameObject HumanAObject;
+    public GameObject HumanDumb;
     int howManyInitialHumans = 5;
     public int totalHumans;
     public int count = 0;
-    public float minHealth;
+    public float minHealth = 999;
 
-    humanBrain2[] allNorHuman;
+    GameObject[] allNorHuman = new GameObject[] { };
+    GameObject[] allDumbHuman = new GameObject[] { };
+    GameObject[] allHuman = new GameObject[] { };
 
 
     //UI
@@ -29,7 +32,20 @@ public class humanManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        initiateHumanA_Born();
+        totalHumans = allNorHuman.Length + allDumbHuman.Length;
+
+        printPopulation();
+
+        findMinHealth();
+        initiateHuman_Born();
+
+        Debug.Log("allNorHuman.Length =" + allNorHuman.Length);
+    }
+
+    void printPopulation()
+    {
+        populationString = totalHumans + "";
+        textElementPopulation.text = populationString;
     }
 
     void initiateHumanA_Start()
@@ -42,32 +58,41 @@ public class humanManager : MonoBehaviour
             GameObject newHumanA = Instantiate(HumanAObject, pos, Quaternion.identity);
             newHumanA.name = "Human_A";
             newHumanA.gameObject.tag = "HumanA";
+            //newHumanA.gameObject.tag = "Human";
+            allNorHuman = GameObject.FindGameObjectsWithTag("HumanA");
         }
     }
 
-    void initiateHumanA_Born()
+    void findMinHealth()
     {
-        allNorHuman = FindObjectsOfType<humanBrain2>();
-        totalHumans = allNorHuman.Length;
-        populationString = totalHumans + "";
-        textElementPopulation.text = populationString;
+        minHealth = 999;
+        for (int i = 0; i < allNorHuman.Length; i++)
+        {
+            if (allNorHuman[i].GetComponent<humanBrain2>().humanHealth < minHealth)
+            {
+                minHealth = allNorHuman[i].GetComponent<humanBrain2>().humanHealth;
+            }
+        }
 
+        for (int i = 0; i < allDumbHuman.Length; i++)
+        {
+            Debug.Log("Script = " + allDumbHuman[i].GetComponent<humanBrainDumb>());
+
+            if (allDumbHuman[i].GetComponent<humanBrainDumb>().humanHealth < minHealth)
+            {
+                minHealth = allDumbHuman[i].GetComponent<humanBrainDumb>().humanHealth;
+            }
+        }
+
+    }
+
+    void initiateHuman_Born()
+    {
         count++;
         if (count > 500)
         {
-            for (int i = 0; i < totalHumans; i++)
-            {
-                if (i == 0)
-                {
-                    minHealth = allNorHuman[i].humanHealth;
-                }
-                if (allNorHuman[i].humanHealth < minHealth)
-                {
-                    minHealth = allNorHuman[i].humanHealth;
-                }
-            }
 
-            if (minHealth > 30)
+            if (minHealth > 30 & totalHumans < 10)
             {
                 float randX = Random.Range(-24.0f, 24.0f);
                 float randZ = Random.Range(-24.0f, 24.0f);
@@ -75,10 +100,42 @@ public class humanManager : MonoBehaviour
                 GameObject newHumanA = Instantiate(HumanAObject, pos, Quaternion.identity);
                 newHumanA.name = "Human_A_new";
                 newHumanA.gameObject.tag = "HumanA";
+                //newHumanA.gameObject.tag = "Human";
                 count = 0;
+                allNorHuman = GameObject.FindGameObjectsWithTag("HumanA");
             }
 
+
+            if (minHealth > 30 && totalHumans < 20 && totalHumans > 9)
+            {
+                if (totalHumans % 2 == 0)
+                {
+                    float randX = Random.Range(-24.0f, 24.0f);
+                    float randZ = Random.Range(-24.0f, 24.0f);
+                    Vector3 pos = new Vector3(randX, 0.25f, randZ);
+                    GameObject newHumanDumb = Instantiate(HumanDumb, pos, Quaternion.identity);
+                    newHumanDumb.name = "Human_Dumb_new";
+                    newHumanDumb.gameObject.tag = "HumanDumb";
+                    //newHumanDumb.gameObject.tag = "Human";
+                    count = 0;
+                    allDumbHuman = GameObject.FindGameObjectsWithTag("HumanDumb");
+                }
+
+                if (totalHumans % 2 != 0)
+                {
+                    float randX = Random.Range(-24.0f, 24.0f);
+                    float randZ = Random.Range(-24.0f, 24.0f);
+                    Vector3 pos = new Vector3(randX, 0.25f, randZ);
+                    GameObject newHumanA = Instantiate(HumanAObject, pos, Quaternion.identity);
+                    newHumanA.name = "Human_A_new";
+                    newHumanA.gameObject.tag = "HumanA";
+                    //newHumanA.gameObject.tag = "Human";
+                    count = 0;
+                    allNorHuman = GameObject.FindGameObjectsWithTag("HumanA");
+                }
+            }
         }
     }
-
 }
+
+
