@@ -11,10 +11,12 @@ public class humanBrain2 : MonoBehaviour
         Wander,
         HighSearchMagic,
         MoveToEatMagic,
+        Die,
     }
 
     public State myState = State.Wander;
     public float humanHealth;
+    public float humanIntelligence;
 
     float randRotation;
     float randTimeToRotate;
@@ -48,67 +50,76 @@ public class humanBrain2 : MonoBehaviour
         humanHealth = Random.Range(30.0f, 90.0f);
 
         allFoodMush = FindObjectsOfType<foodBrain>();
-        Debug.Log("FindAllFood");
+        //Debug.Log("FindAllFood");
 
         allPoisonMush = FindObjectsOfType<poisonBrain>();
-        Debug.Log("FindAllPoison");
+        //Debug.Log("FindAllPoison");
 
         allMagicMush = FindObjectsOfType<magicBrain>();
-        Debug.Log("FindAllMagic");
+        //Debug.Log("FindAllMagic");
     }
 
     // Update is called once per frame
     void Update()
     {
         stayWithinBounds();
-        consumeEnergy();
-        die();
-        reborn();
+        //reborn();
 
         if (myState == State.Wander)
         {
             move(1,0);
             turnOverTime(1);
+            consumeEnergy();
 
             changeState();
 
-            Debug.Log("Wander!");
+            //Debug.Log("Wander!");
         }
         else if (myState == State.HungrySearchFood)
         {
+            consumeEnergy();
+
             findClosestFoodMush();
 
             changeStateIfFindFood();
 
-            Debug.Log("Hungry!");
+            //Debug.Log("Hungry!");
         }
         else if (myState == State.MoveToEatFood)
         {
+            consumeEnergy();
             moveToClosestFood(); //move(3)
             eatFoodMush(); //check state
 
-            Debug.Log("Move to Food!");
+            //Debug.Log("Move to Food!");
         }
         else if (myState == State.HighSearchMagic)
         {
+            consumeEnergy();
+
             findClosestMagicMush();
 
             changeStateIfFindMagic();
 
-            Debug.Log("High!");
+            //Debug.Log("High!");
         }
         else if (myState == State.MoveToEatMagic)
         {
+            consumeEnergy();
             moveToClosestMagic(); //move(2), check state
             eatMagicMush(); //check state
 
-            Debug.Log("Move to Magic!");
+            //Debug.Log("Move to Magic!");
+        }
+        else if (myState == State.Die)
+        {
+            move(0, 0);
+            turnOverTime(0);
         }
 
     }
 
     //function
-
     void OnCollisionEnter(Collision collision)
     {
         randRotation = Random.Range(-60.0f, 60.0f);
@@ -150,8 +161,8 @@ public class humanBrain2 : MonoBehaviour
         {
             myState = State.Wander;
         }
-
-        Debug.Log("MoveToClosestMagic");
+        
+        //Debug.Log("MoveToClosestMagic");
 
         //Debug.DrawLine(p1, p2, Color.red);
     }
@@ -185,7 +196,7 @@ public class humanBrain2 : MonoBehaviour
                 transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(219/225f, 78/225f, 78/225f);
             };
         }
-        else if (humanHealth < 30)
+        else if (humanHealth < 30 && humanHealth > 0)
         {
             myState = State.HungrySearchFood;
             GetComponent<Renderer>().material.color = new Color(255 / 225f, 204 / 225f, 0 / 225f);
@@ -202,6 +213,17 @@ public class humanBrain2 : MonoBehaviour
             {
                 transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(200 / 225f, 200 / 225f, 200 / 225f);
             };
+        }
+        else if (humanHealth < 1)
+        {
+            myState = State.Die;
+            GetComponent<Renderer>().enabled = false;
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).GetComponent<Renderer>().enabled = false;
+            };
+            Debug.Log("Die!!");
+
         }
     }
 
@@ -235,7 +257,7 @@ public class humanBrain2 : MonoBehaviour
         transform.LookAt(p2Flat);
         move(5,0);
 
-        Debug.Log("MoveToClosestFood");
+        //Debug.Log("MoveToClosestFood");
         //Debug.DrawLine(p1, p2, Color.red);
     }
 
@@ -275,18 +297,6 @@ public class humanBrain2 : MonoBehaviour
             count = 0;
         }
 
-    }
-
-    void die()
-    {
-        if (humanHealth < 1)
-        {
-            this.GetComponent<MeshRenderer>().enabled = false;
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                Destroy(this.gameObject);
-            }
-        }
     }
 
     void consumeEnergy()

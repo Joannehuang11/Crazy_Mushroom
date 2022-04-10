@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 201865120747472206}
   - component: {fileID: 201865120747472205}
   - component: {fileID: 201865120747472204}
-  - component: {fileID: 201865120747472203}
   - component: {fileID: 1392798974991971125}
   m_Layer: 0
   m_Name: FoodMushroom
@@ -194,22 +193,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &201865120747472203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201865120747472202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1690a588632b51e46a3098e71aa42579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  timeToReborn: 2000
-  count: 0
-  MagicMushObject: {fileID: 201865120747472202}
 --- !u!114 &1392798974991971125
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,47 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class humanManager : MonoBehaviour
 {
     //Variables
-    public GameObject HumanAObject;
-    public GameObject HumanDumb;
+    public GameObject HumanJunior;
+    public GameObject HumanInter;
+    public GameObject HumanPro;
     int howManyInitialHumans = 5;
     public int totalHumans;
     public int count = 0;
     public float minHealth = 999;
 
-    GameObject[] allNorHuman = new GameObject[] { };
-    GameObject[] allDumbHuman = new GameObject[] { };
-    GameObject[] allHuman = new GameObject[] { };
+    float humanIQ;
 
-    //List<GameObject> allHumans_list = new List<GameObject>();
-    //List<GameObject> smartHumans_list = new List<GameObject>();
+    List<GameObject> allHumans_list;
+    List<GameObject> junior_list;
+    List<GameObject> intermediate_list;
+    List<GameObject> pro_list;
+
+    int numJun = 1;
+    int numInter = 1;
+    int numPro = 1;
 
 
     //UI
     public string populationString;
     public Text textElementPopulation;
+    public string JuniorNumString;
+    public Text textElementJuniorNum;
+    public string InterNumString;
+    public Text textElementInterNum;
+    public string ProNumString;
+    public Text textElementProNum;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        initiateHumanA_Start();
+        initiateHuman_Start();
     }
 
     // Update is called once per frame
     void Update()
     {
-        totalHumans = allNorHuman.Length + allDumbHuman.Length;
+        count++;
 
         printPopulation();
+        printJuniorNum();
+        printIntermediateNum();
+        printProNum();
 
         findMinHealth();
         initiateHuman_Born();
 
-        Debug.Log("allNorHuman.Length =" + allNorHuman.Length);
+        dieRemoveFromList();
     }
 
     void printPopulation()
@@ -51,97 +66,181 @@ public class humanManager : MonoBehaviour
         textElementPopulation.text = populationString;
     }
 
-    void initiateHumanA_Start()
+    void printJuniorNum()
     {
-        for (int i = 0; i < howManyInitialHumans; i = i + 1)
+        JuniorNumString = junior_list.Count + "";
+        textElementJuniorNum.text = JuniorNumString;
+    }
+
+    void printIntermediateNum()
+    {
+        InterNumString = intermediate_list.Count + "";
+        textElementInterNum.text = InterNumString;
+    }
+
+    void printProNum()
+    {
+        ProNumString = pro_list.Count + "";
+        textElementProNum.text = ProNumString;
+    }
+
+    void initiateHuman_Start()
+    {
+        int humanIQ = Random.Range(0, 100);
+        junior_list = new List<GameObject>();
+        intermediate_list = new List<GameObject>();
+        pro_list = new List<GameObject>();
+
+
+        if (humanIQ > 70)
         {
-            float randX = Random.Range(-24.0f, 24.0f);
-            float randZ = Random.Range(-24.0f, 24.0f);
-            Vector3 pos = new Vector3(randX, 0.25f, randZ);
-            GameObject newHumanA = Instantiate(HumanAObject, pos, Quaternion.identity);
-            newHumanA.name = "Human_A";
-            newHumanA.gameObject.tag = "HumanA";
-            newHumanA.gameObject.tag = "Human";
-            allNorHuman = GameObject.FindGameObjectsWithTag("HumanA");
-
-            //allHumans_list.Add(newHumanA);
-
-            //if new human . knowledge > 90 { smartHumans_list.add(new human)}
+            initiateHuman_Born_Pro();
+            Debug.Log("Pro");
         }
+        if (humanIQ < 30)
+        {
+            initiateHuman_Born_Junior();
+            Debug.Log("Junior");
+        }
+        if (humanIQ < 71 && humanIQ > 29)
+        {
+            initiateHuman_Born_Inter();
+            Debug.Log("Inter");
+        }
+        totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
+    }
+
+
+    void initiateHuman_Born()
+    {
+        if (count > 1000)
+        {
+            humanIQ = Random.Range(0, 100);
+            if (humanIQ > 70)
+            {
+                initiateHuman_Born_Pro();
+                Debug.Log("Pro");
+            }
+            if (humanIQ < 30)
+            {
+                initiateHuman_Born_Junior();
+                Debug.Log("Junior");
+            }
+            if (humanIQ < 71 && humanIQ > 29)
+            {
+                initiateHuman_Born_Inter();
+                Debug.Log("Inter");
+            }
+            count = 0;
+        }
+        totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
+    }
+
+    void initiateHuman_Born_Junior()
+    {
+        float randX = Random.Range(-24.0f, 24.0f);
+        float randZ = Random.Range(-24.0f, 24.0f);
+        Vector3 pos = new Vector3(randX, 0.25f, randZ);
+        GameObject newHumanJunior = Instantiate(HumanJunior, pos, Quaternion.identity);
+        newHumanJunior.name = "HumanJunior" + numJun;
+        newHumanJunior.GetComponent<humanBrain2>().humanIntelligence = humanIQ;
+        numJun = numJun + 1;
+
+        junior_list.Add(newHumanJunior);
+    }
+
+    void initiateHuman_Born_Inter()
+    {
+        float randX = Random.Range(-24.0f, 24.0f);
+        float randZ = Random.Range(-24.0f, 24.0f);
+        Vector3 pos = new Vector3(randX, 0.25f, randZ);
+        GameObject newHumanInter = Instantiate(HumanInter, pos, Quaternion.identity);
+        newHumanInter.name = "HumanInter" + numInter;
+        newHumanInter.GetComponent<humanBrain2>().humanIntelligence = humanIQ;
+        numInter = numInter + 1;
+
+        intermediate_list.Add(newHumanInter);
+    }
+
+    void initiateHuman_Born_Pro()
+    {
+        float randX = Random.Range(-24.0f, 24.0f);
+        float randZ = Random.Range(-24.0f, 24.0f);
+        Vector3 pos = new Vector3(randX, 0.25f, randZ);
+        GameObject newHumanPro = Instantiate(HumanPro, pos, Quaternion.identity);
+        newHumanPro.name = "HumanPro" + numPro;
+        newHumanPro.GetComponent<humanBrain2>().humanIntelligence = humanIQ;
+        numPro = numPro + 1;
+
+        pro_list.Add(newHumanPro);
     }
 
     void findMinHealth()
     {
-        minHealth = 999;
-        for (int i = 0; i < allNorHuman.Length; i++)
+
+        for (int i = 0; i < pro_list.Count; i++)
         {
-            if (allNorHuman[i].GetComponent<humanBrain2>().humanHealth < minHealth)
+            if (pro_list[i].GetComponent<humanBrain2>().humanHealth < minHealth)
             {
-                minHealth = allNorHuman[i].GetComponent<humanBrain2>().humanHealth;
+                minHealth = pro_list[i].GetComponent<humanBrain2>().humanHealth;
             }
         }
 
-        for (int i = 0; i < allDumbHuman.Length; i++)
+        for (int i = 0; i < intermediate_list.Count; i++)
         {
-            Debug.Log("Script = " + allDumbHuman[i].GetComponent<humanBrainDumb>());
-
-            if (allDumbHuman[i].GetComponent<humanBrainDumb>().humanHealth < minHealth)
+            if (intermediate_list[i].GetComponent<humanBrain2>().humanHealth < minHealth)
             {
-                minHealth = allDumbHuman[i].GetComponent<humanBrainDumb>().humanHealth;
+                minHealth = intermediate_list[i].GetComponent<humanBrain2>().humanHealth;
+            }
+        }
+
+        for (int i = 0; i < junior_list.Count; i++)
+        {
+            if (junior_list[i].GetComponent<humanBrain2>().humanHealth < minHealth)
+            {
+                minHealth = junior_list[i].GetComponent<humanBrain2>().humanHealth;
             }
         }
     }
 
-    void initiateHuman_Born()
+    void dieRemoveFromList()
     {
-        count++;
-        if (count > 500)
+        int dieID_Junior;
+        int dieID_Inter;
+        int dieID_Pro;
+
+        for (int i = 0; i < pro_list.Count; i++)
         {
-
-            if (minHealth > 30 & totalHumans < 10)
+            if (pro_list[i].GetComponent<humanBrain2>().myState == humanBrain2.State.Die)
             {
-                float randX = Random.Range(-24.0f, 24.0f);
-                float randZ = Random.Range(-24.0f, 24.0f);
-                Vector3 pos = new Vector3(randX, 0.25f, randZ);
-                GameObject newHumanA = Instantiate(HumanAObject, pos, Quaternion.identity);
-                newHumanA.name = "Human_A_new";
-                newHumanA.gameObject.tag = "HumanA";
-                //newHumanA.gameObject.tag = "Human";
-                count = 0;
-                allNorHuman = GameObject.FindGameObjectsWithTag("HumanA");
+                dieID_Pro = i;
+                pro_list.RemoveAt(dieID_Pro);
+                Debug.Log("remove pro" + dieID_Pro);
+                totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
             }
+        }
 
-
-            if (minHealth > 30 && totalHumans < 20 && totalHumans > 9)
+        for (int i = 0; i < intermediate_list.Count; i++)
+        {
+            if (intermediate_list[i].GetComponent<humanBrain2>().myState == humanBrain2.State.Die)
             {
-                if (totalHumans % 2 == 0)
-                {
-                    float randX = Random.Range(-24.0f, 24.0f);
-                    float randZ = Random.Range(-24.0f, 24.0f);
-                    Vector3 pos = new Vector3(randX, 0.25f, randZ);
-                    GameObject newHumanDumb = Instantiate(HumanDumb, pos, Quaternion.identity);
-                    newHumanDumb.name = "Human_Dumb_new";
-                    newHumanDumb.gameObject.tag = "HumanDumb";
-                    //newHumanDumb.gameObject.tag = "Human";
-                    count = 0;
-                    allDumbHuman = GameObject.FindGameObjectsWithTag("HumanDumb");
-                }
+                dieID_Inter = i;
+                intermediate_list.RemoveAt(dieID_Inter);
+                Debug.Log("remove inter" + dieID_Inter);
+                totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
+            }
+        }
 
-                if (totalHumans % 2 != 0)
-                {
-                    float randX = Random.Range(-24.0f, 24.0f);
-                    float randZ = Random.Range(-24.0f, 24.0f);
-                    Vector3 pos = new Vector3(randX, 0.25f, randZ);
-                    GameObject newHumanA = Instantiate(HumanAObject, pos, Quaternion.identity);
-                    newHumanA.name = "Human_A_new";
-                    newHumanA.gameObject.tag = "HumanA";
-                    //newHumanA.gameObject.tag = "Human";
-                    count = 0;
-                    allNorHuman = GameObject.FindGameObjectsWithTag("HumanA");
-                }
+        for (int i = 0; i < junior_list.Count; i++)
+        {
+            if (junior_list[i].GetComponent<humanBrain2>().myState == humanBrain2.State.Die)
+            {
+                dieID_Junior = i;
+                junior_list.RemoveAt(dieID_Junior);
+                Debug.Log("remove junior" + dieID_Junior);
+                totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
             }
         }
     }
 }
-
 
