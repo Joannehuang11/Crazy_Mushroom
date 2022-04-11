@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
+
 public class humanManager : MonoBehaviour
 {
     //Variables
@@ -13,6 +14,7 @@ public class humanManager : MonoBehaviour
     int howManyInitialHumans = 5;
     public int totalHumans;
     public int count = 0;
+    int countDay = 0;
     public float minHealth = 999;
 
     float humanIQ;
@@ -36,6 +38,8 @@ public class humanManager : MonoBehaviour
     public Text textElementInterNum;
     public string ProNumString;
     public Text textElementProNum;
+    public string DayString;
+    public Text textElementDayNum;
 
 
     // Start is called before the first frame update
@@ -48,11 +52,13 @@ public class humanManager : MonoBehaviour
     void Update()
     {
         count++;
+        countDay++;
 
         printPopulation();
         printJuniorNum();
         printIntermediateNum();
         printProNum();
+        printDayNum();
 
         findMinHealth();
         initiateHuman_Born();
@@ -82,6 +88,13 @@ public class humanManager : MonoBehaviour
     {
         ProNumString = pro_list.Count + "";
         textElementProNum.text = ProNumString;
+    }
+
+    void printDayNum()
+    {
+        float day = countDay;
+        DayString = day + "";
+        textElementDayNum.text = DayString;
     }
 
     void initiateHuman_Start()
