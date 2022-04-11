@@ -159,6 +159,7 @@ public class humanManager : MonoBehaviour
         GameObject newHumanJunior = Instantiate(HumanJunior, pos, Quaternion.identity);
         newHumanJunior.name = "HumanJunior" + numJun;
         newHumanJunior.GetComponent<humanBrain1>().humanIntelligence = humanIQ;
+        newHumanJunior.GetComponent<humanBrain1>().timeSpeed = timeSpeed;
         numJun = numJun + 1;
 
         junior_list.Add(newHumanJunior);
@@ -172,6 +173,7 @@ public class humanManager : MonoBehaviour
         GameObject newHumanInter = Instantiate(HumanInter, pos, Quaternion.identity);
         newHumanInter.name = "HumanInter" + numInter;
         newHumanInter.GetComponent<humanBrain2>().humanIntelligence = humanIQ;
+        newHumanInter.GetComponent<humanBrain2>().timeSpeed = timeSpeed;
         numInter = numInter + 1;
 
         intermediate_list.Add(newHumanInter);
@@ -185,6 +187,7 @@ public class humanManager : MonoBehaviour
         GameObject newHumanPro = Instantiate(HumanPro, pos, Quaternion.identity);
         newHumanPro.name = "HumanPro" + numPro;
         newHumanPro.GetComponent<humanBrain3>().humanIntelligence = humanIQ;
+        newHumanPro.GetComponent<humanBrain3>().timeSpeed = timeSpeed;
 
         pro_list.Add(newHumanPro);
     }

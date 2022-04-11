@@ -1204,9 +1204,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 145899903}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
-        m_MethodName: changeToRain
+      - m_Target: {fileID: 4896615470929798510}
+        m_TargetAssemblyTypeName: treeManager, Assembly-CSharp
+        m_MethodName: reInitiateSite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1988,9 +1988,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443e75cf09adc464cbe438ec5b472b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HumanJunior: {fileID: 8082995220294154314, guid: 46f45e5c2cc4e4851af03161b622079d, type: 3}
-  HumanInter: {fileID: 2194971200821830063, guid: ad6494e97427f400a9142023eb2bc211, type: 3}
-  HumanPro: {fileID: 4650878396704884129, guid: dd7a6c95505dc47c2ae583f6470568b1, type: 3}
+  HumanJunior: {fileID: 6907444087819895621, guid: 9310ae549af726b429fe196be2dcb9c3, type: 3}
+  HumanInter: {fileID: 9222126918591602358, guid: 562aa77b7c76cd94d86344fbdd2d587e, type: 3}
+  HumanPro: {fileID: 2384822539923975335, guid: e6813cc9385b6414184e1b6801a77884, type: 3}
   totalHumans: 0
   count: 0
   minHealth: 999
@@ -3251,6 +3251,8 @@ MonoBehaviour:
   FoodMushroomObject: {fileID: 201865120747472202, guid: 51e986c96881581439317f0eab982c37, type: 3}
   MagicMushroomObject: {fileID: 7065604259069737676, guid: 6a3633778e253254ca19c88bf91aaf5b, type: 3}
   allRuins: []
+  allTree: []
+  allMush: []
 --- !u!4 &4896615470929798511
 Transform:
   m_ObjectHideFlags: 0

@@ -37,7 +37,6 @@ public class foodBrain : MonoBehaviour
                 transform.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
             }
         }
-
     }
 
     void die()

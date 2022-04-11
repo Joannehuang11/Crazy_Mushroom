@@ -72,7 +72,7 @@ public class humanBrain1 : MonoBehaviour
 
         if (myState == State.Wander)
         {
-            move(1, 0);
+            move(1);
             turnOverTime(1);
             consumeEnergy();
 
@@ -118,7 +118,7 @@ public class humanBrain1 : MonoBehaviour
         }
         else if (myState == State.Die)
         {
-            move(0, 0);
+            move(0);
             turnOverTime(0);
         }
 
@@ -129,6 +129,7 @@ public class humanBrain1 : MonoBehaviour
     {
         randRotation = Random.Range(-60.0f, 60.0f);
         transform.Rotate(new Vector3(0, randRotation, 0));
+        Debug.Log("hit !");
     }
 
     public void resetMush()
@@ -136,6 +137,7 @@ public class humanBrain1 : MonoBehaviour
         allFoodMush = FindObjectsOfType<foodBrain>();
         allPoisonMush = FindObjectsOfType<poisonBrain>();
         allMagicMush = FindObjectsOfType<magicBrain>();
+        Debug.Log("resetMush1");
     }
 
     void eatMagicMush()
@@ -166,7 +168,8 @@ public class humanBrain1 : MonoBehaviour
         Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
 
         transform.LookAt(p2Flat);
-        move(3, 20);
+        move(3);
+        spin(20);
 
         if (humanHealth < 90)
         {
@@ -201,37 +204,33 @@ public class humanBrain1 : MonoBehaviour
         if (humanHealth > 89)
         {
             myState = State.HighSearchMagic;
-            GetComponent<Renderer>().material.color = new Color(219 / 225f, 78 / 225f, 78 / 225f);
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(219 / 225f, 78 / 225f, 78 / 225f);
+                transform.GetChild(i).GetComponent<MeshRenderer>().material.color = new Color(219 / 225f, 78 / 225f, 78 / 225f);
             };
         }
         else if (humanHealth < 50 && humanHealth > 0)
         {
             myState = State.HungrySearchFoodOrPoison;
-            GetComponent<Renderer>().material.color = new Color(255 / 225f, 204 / 225f, 0 / 225f);
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(255 / 225f, 204 / 225f, 0 / 225f);
+                transform.GetChild(i).GetComponent<MeshRenderer>().material.color = new Color(255 / 225f, 204 / 225f, 0 / 225f);
             };
         }
         else if (humanHealth > 49 && humanHealth < 90)
         {
             myState = State.Wander;
-            GetComponent<Renderer>().material.color = new Color(200 / 225f, 200 / 225f, 200 / 225f);
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(200 / 225f, 200 / 225f, 200 / 225f);
+                transform.GetChild(i).GetComponent<MeshRenderer>().material.color = new Color(200 / 225f, 200 / 225f, 200 / 225f);
             };
         }
         else if (humanHealth < 1)
         {
             myState = State.Die;
-            GetComponent<Renderer>().enabled = false;
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).GetComponent<Renderer>().enabled = false;
+                transform.GetChild(i).GetComponent<MeshRenderer>().enabled = false;
             };
             Debug.Log("Die!!");
 
@@ -286,7 +285,7 @@ public class humanBrain1 : MonoBehaviour
             Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
 
             transform.LookAt(p2Flat);
-            move(5, 0);
+            move(3);
             //Debug.Log("MoveToClosestPoison");
         }
         else
@@ -296,7 +295,7 @@ public class humanBrain1 : MonoBehaviour
             Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
 
             transform.LookAt(p2Flat);
-            move(5, 0);
+            move(3);
             //Debug.Log("MoveToClosestFood");
         }
 
@@ -333,7 +332,7 @@ public class humanBrain1 : MonoBehaviour
 
     void consumeEnergy()
     {
-        humanHealth -= 0.01f;
+        humanHealth -= 0.01f * timeSpeed;
     }
 
     void stayWithinBounds()
@@ -353,7 +352,7 @@ public class humanBrain1 : MonoBehaviour
     void turnOverTime(float multiplier)
     {
         int countMove = 0;
-        countMove += 1*timeSpeed;
+        countMove += timeSpeed*2;
         if (countMove * multiplier > randTimeToRotate)
         {
             //rotate in a random orientation
@@ -364,11 +363,13 @@ public class humanBrain1 : MonoBehaviour
         }
     }
 
-    void move(float multiplier, float rot)
+    void move(float multiplier)
     {
-        int countMove = 0;
-        countMove += 1 * timeSpeed;
         transform.position += (transform.forward * randSpeed * timeSpeed * multiplier);
-        transform.Rotate(0, rot * countMove, 0);
+    }
+
+    void spin(float rot)
+    {
+        transform.Rotate(0, rot * count, 0);
     }
 }

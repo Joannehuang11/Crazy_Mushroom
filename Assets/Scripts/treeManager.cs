@@ -22,6 +22,11 @@ public class treeManager : MonoBehaviour
     public List<GameObject> allTree;
     public List<GameObject> allMush;
 
+    humanBrain1[] juniorHuman;
+    humanBrain2[] interHuman;
+    humanBrain3[] proHuman;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +73,26 @@ public class treeManager : MonoBehaviour
         allMush.Clear();
 
         initiateSite();
+
+        juniorHuman = FindObjectsOfType<humanBrain1>();
+        interHuman = FindObjectsOfType<humanBrain2>();
+        proHuman = FindObjectsOfType<humanBrain3>();
+
+        for (int i = 0; i < juniorHuman.Length; i++)
+        {
+            juniorHuman[i].GetComponent<humanBrain1>().resetMush();
+        }
+
+        for (int i = 0; i < interHuman.Length; i++)
+        {
+            interHuman[i].GetComponent<humanBrain2>().resetMush();
+        }
+
+        for (int i = 0; i < proHuman.Length; i++)
+        {
+            proHuman[i].GetComponent<humanBrain3>().resetMush();
+        }
+
     }
 
     void initiateRuins()

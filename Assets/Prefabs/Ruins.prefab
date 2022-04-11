@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8893139702352079314}
   - component: {fileID: 8893139702352079315}
   - component: {fileID: 8893139702352079312}
+  - component: {fileID: 290534835871868388}
   m_Layer: 0
   m_Name: Ruins
   m_TagString: Untagged
@@ -97,6 +98,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.2831712, y: 1.3269103, z: 1.1989056}
   m_Center: {x: 0.17839909, y: 0.054485403, z: -0.015193844}
+--- !u!54 &290534835871868388
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893139702352079313}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8893139703299937845
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +126,7 @@ GameObject:
   - component: {fileID: 8893139703299937846}
   - component: {fileID: 8893139703299937847}
   - component: {fileID: 8893139703299937844}
+  - component: {fileID: 2566337705706200965}
   m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
@@ -192,6 +210,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.0266197, y: 1.46102, z: 1.0595906}
   m_Center: {x: 0.11356165, y: 0.24910489, z: 0.03195379}
+--- !u!54 &2566337705706200965
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893139703299937845}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8893139704060872438
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +238,7 @@ GameObject:
   - component: {fileID: 8893139704060872427}
   - component: {fileID: 8893139704060872424}
   - component: {fileID: 8893139704060872425}
+  - component: {fileID: 335311531218572204}
   m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
@@ -287,3 +322,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2462485, y: 1.1634552, z: 1.1018395}
   m_Center: {x: -0.038193084, y: 0.081727624, z: 0.020197608}
+--- !u!54 &335311531218572204
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893139704060872438}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
