@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\humanManager.cs" />
      <Compile Include="Assets\Scripts\humanBrain1.cs" />
      <Compile Include="Assets\Scripts\mushroomManager.cs" />
+     <Compile Include="Assets\Scripts\cameraControl.cs" />
      <Compile Include="Assets\Scripts\humanBrain3.cs" />
      <Compile Include="Assets\Scripts\treeManager.cs" />
      <Compile Include="Assets\Scripts\foodBrain.cs" />
@@ -58,7 +59,6 @@
      <Compile Include="Assets\Scripts\magicBrain.cs" />
      <Compile Include="Assets\Scripts\poisonBrain.cs" />
      <Compile Include="Assets\Scripts\perlinNoiseMap.cs" />
-     <Compile Include="Assets\Scripts\cameraControl.cs" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

@@ -167,7 +167,7 @@ public class humanBrain2 : MonoBehaviour
         Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
 
         transform.LookAt(p2Flat);
-        move(3);
+        move(1);
         spin(20);
 
         if (humanHealth < 90)

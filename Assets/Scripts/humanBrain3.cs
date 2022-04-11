@@ -159,11 +159,25 @@ public class humanBrain3 : MonoBehaviour
     {
         if (humanHealth > 89)
         {
-            myState = State.HighSearchMagic;
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < allMagicMush.Length; i++)
             {
-                transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(219 / 225f, 78 / 225f, 78 / 225f);
-            };
+                if (allMagicMush[i].health == 1)
+                {
+                    myState = State.HighSearchMagic;
+                    for (int j = 0; j < transform.childCount; j++)
+                    {
+                        transform.GetChild(j).GetComponent<Renderer>().material.color = new Color(219 / 225f, 78 / 225f, 78 / 225f);
+                    };
+                }
+                else
+                {
+                    myState = State.Wander;
+                    for (int j = 0; j < transform.childCount; j++)
+                    {
+                        transform.GetChild(j).GetComponent<Renderer>().material.color = new Color(200 / 225f, 200 / 225f, 200 / 225f);
+                    };
+                }
+            }
         }
         else if (humanHealth < 50 && humanHealth > 0)
         {
@@ -295,7 +309,7 @@ public class humanBrain3 : MonoBehaviour
         Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
 
         transform.LookAt(p2Flat);
-        move(3);
+        move(1);
         spin(20);
 
         if (humanHealth < 90)

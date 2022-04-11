@@ -49,7 +49,7 @@ public class treeManager : MonoBehaviour
     public void mushOnSunny()
     {
         clearOriginalMush();
-        instantiateMushroomsAroundRuins();
+        instantiateMushroomsAroundsRuin();
         resetHumanMushList();
     }
 
@@ -69,7 +69,7 @@ public class treeManager : MonoBehaviour
         initiateTree2();
         initiateTree3();
         initiateRuins();
-        instantiateMushroomsAroundRuins();
+        instantiateMushroomsAroundsRuin();
     }
 
     void clearOriginal()
@@ -141,8 +141,8 @@ public class treeManager : MonoBehaviour
     {
         for (int i = 0; i < howManyTrees; i++)
         {
-            float randX = Random.Range(-24.0f, 24.0f);
-            float randZ = Random.Range(-24.0f, 24.0f);
+            float randX = Random.Range(-20.0f, 2.0f);
+            float randZ = Random.Range(-20.0f, 20.0f);
             Vector3 pos = new Vector3(randX, 1.0f, randZ);
             Quaternion rot = Quaternion.identity;
             rot.eulerAngles = new Vector3(0, 0, 0);
@@ -158,8 +158,8 @@ public class treeManager : MonoBehaviour
     {
         for (int i = 0; i < howManyTrees; i++)
         {
-            float randX = Random.Range(-24.0f, 24.0f);
-            float randZ = Random.Range(-24.0f, 24.0f);
+            float randX = Random.Range(-20.0f, 20.0f);
+            float randZ = Random.Range(-20.0f, 20.0f);
             Vector3 pos = new Vector3(randX, 1.0f, randZ);
             Quaternion rot = Quaternion.identity;
             rot.eulerAngles = new Vector3(0, 0, 0);
@@ -174,8 +174,8 @@ public class treeManager : MonoBehaviour
     {
         for (int i = 0; i < howManyTrees; i++)
         {
-            float randX = Random.Range(-24.0f, 24.0f);
-            float randZ = Random.Range(-24.0f, 24.0f);
+            float randX = Random.Range(-20.0f, 20.0f);
+            float randZ = Random.Range(-20.0f, 20.0f);
             Vector3 pos = new Vector3(randX, 0.75f, randZ);
             Quaternion rot = Quaternion.identity;
             rot.eulerAngles = new Vector3(0, 0, 0);
@@ -186,14 +186,65 @@ public class treeManager : MonoBehaviour
         }
     }
 
-    void instantiateMushroomsAroundRuins()
+    //void instantiateMushroomsAroundRuins()
+    //{
+    //    for (int i = 0; i < allRuins.Count; i++)
+    //    {
+    //        for (int j = 0; j < howManyFoodMushrooms; j++)
+    //        {
+    //            float randRadiusX = Random.Range(-6.0f, 6.0f);
+    //            float randRadiusZ = Random.Range(-6.0f, 6.0f);
+    //            Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+    //            Vector3 xz = allRuins[i].transform.position + randomPos;
+
+    //            Quaternion rot = Quaternion.identity;
+    //            //transform.position = new Vector3(xz.x, .5f, xz.z);
+    //            GameObject newFoodMush = Instantiate(FoodMushroomObject, xz, rot);
+    //            newFoodMush.name = "FoodMush" + i;
+
+    //            allMush.Add(newFoodMush);
+    //        }
+
+    //        for (int k = 0; k < howManyPoisonMushrooms; k++)
+    //        {
+    //            float randRadiusX = Random.Range(-4.0f, 4.0f);
+    //            float randRadiusZ = Random.Range(-4.0f, 4.0f);
+    //            Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+    //            Vector3 xz = allRuins[i].transform.position + randomPos;
+
+    //            Quaternion rot = Quaternion.identity;
+    //            //transform.position = new Vector3(xz.x, .5f, xz.z);
+    //            GameObject newPoisonMush = Instantiate(PoisonMushroomObject, xz, rot);
+    //            newPoisonMush.name = "PoisonMush" + i;
+
+    //            allMush.Add(newPoisonMush);
+    //        }
+
+    //        for (int l = 0; l < howManyMagicMushrooms; l++)
+    //        {
+    //            float randRadiusX = Random.Range(-4.0f, 4.0f);
+    //            float randRadiusZ = Random.Range(-4.0f, 4.0f);
+    //            Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+    //            Vector3 xz = allRuins[i].transform.position + randomPos;
+
+    //            Quaternion rot = Quaternion.identity;
+    //            //transform.position = new Vector3(xz.x, .5f, xz.z);
+    //            GameObject newMagicMush = Instantiate(MagicMushroomObject, xz, rot);
+    //            newMagicMush.name = "MagicMush" + i;
+
+    //            allMush.Add(newMagicMush);
+    //        }
+    //    }
+    //}
+
+    void instantiateMushroomsAroundsRuin()
     {
         for (int i = 0; i < allRuins.Count; i++)
         {
             for (int j = 0; j < howManyFoodMushrooms; j++)
             {
-                float randRadiusX = Random.Range(-8.0f, 8.0f);
-                float randRadiusZ = Random.Range(-8.0f, 8.0f);
+                float randRadiusX = Random.Range(-4.0f, 4.0f);
+                float randRadiusZ = Random.Range(-4.0f, 4.0f);
                 Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
                 Vector3 xz = allRuins[i].transform.position + randomPos;
 
@@ -237,15 +288,14 @@ public class treeManager : MonoBehaviour
         }
     }
 
-
     void instantiateMushroomsAroundTrees()
     {
         for (int i = 0; i < allTree.Count; i++)
         {
             for (int j = 0; j < howManyFoodMushrooms / 5; j++)
             {
-                float randRadiusX = Random.Range(-4.0f, 4.0f);
-                float randRadiusZ = Random.Range(-4.0f, 4.0f);
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
                 Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
                 Vector3 xz = allTree[i].transform.position + randomPos;
 
@@ -259,8 +309,8 @@ public class treeManager : MonoBehaviour
 
             for (int k = 0; k < howManyPoisonMushrooms / 5; k++)
             {
-                float randRadiusX = Random.Range(-4.0f, 4.0f);
-                float randRadiusZ = Random.Range(-4.0f, 4.0f);
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
                 Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
                 Vector3 xz = allTree[i].transform.position + randomPos;
 
@@ -274,8 +324,8 @@ public class treeManager : MonoBehaviour
 
             for (int l = 0; l < howManyMagicMushrooms / 5; l++)
             {
-                float randRadiusX = Random.Range(-4.0f, 4.0f);
-                float randRadiusZ = Random.Range(-4.0f, 4.0f);
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
                 Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
                 Vector3 xz = allTree[i].transform.position + randomPos;
 
