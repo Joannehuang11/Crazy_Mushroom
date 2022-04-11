@@ -155,7 +155,7 @@ public class humanManager : MonoBehaviour
     {
         float randX = Random.Range(-24.0f, 24.0f);
         float randZ = Random.Range(-24.0f, 24.0f);
-        Vector3 pos = new Vector3(randX, 0.25f, randZ);
+        Vector3 pos = new Vector3(randX, 0f, randZ);
         GameObject newHumanJunior = Instantiate(HumanJunior, pos, Quaternion.identity);
         newHumanJunior.name = "HumanJunior" + numJun;
         newHumanJunior.GetComponent<humanBrain1>().humanIntelligence = humanIQ;
@@ -169,7 +169,7 @@ public class humanManager : MonoBehaviour
     {
         float randX = Random.Range(-24.0f, 24.0f);
         float randZ = Random.Range(-24.0f, 24.0f);
-        Vector3 pos = new Vector3(randX, 0.25f, randZ);
+        Vector3 pos = new Vector3(randX, 0f, randZ);
         GameObject newHumanInter = Instantiate(HumanInter, pos, Quaternion.identity);
         newHumanInter.name = "HumanInter" + numInter;
         newHumanInter.GetComponent<humanBrain2>().humanIntelligence = humanIQ;
@@ -183,7 +183,7 @@ public class humanManager : MonoBehaviour
     {
         float randX = Random.Range(-24.0f, 24.0f);
         float randZ = Random.Range(-24.0f, 24.0f);
-        Vector3 pos = new Vector3(randX, 0.25f, randZ);
+        Vector3 pos = new Vector3(randX, 0f, randZ);
         GameObject newHumanPro = Instantiate(HumanPro, pos, Quaternion.identity);
         newHumanPro.name = "HumanPro" + numPro;
         newHumanPro.GetComponent<humanBrain3>().humanIntelligence = humanIQ;

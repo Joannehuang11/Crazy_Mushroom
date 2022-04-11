@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\magicBrain.cs" />
      <Compile Include="Assets\Scripts\poisonBrain.cs" />
      <Compile Include="Assets\Scripts\perlinNoiseMap.cs" />
+     <Compile Include="Assets\Scripts\navigationBaker.cs" />
+     <None Include="Assets\NavMeshComponents-master\ProjectSettings\ProjectVersion.txt" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -661,6 +663,26 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NavMeshComponentsExamples.csproj">
+      <Project>{E7D7EF5A-0F84-0E60-1D77-8ECE9394A156}</Project>
+      <Name>NavMeshComponentsExamples</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{D996C036-62D6-196C-E1A9-670D42149FCA}</Project>
+      <Name>NavMeshComponents</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{729AE24C-37CC-C79F-EEC4-F6959FCA138A}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsExamplesEditor.csproj">
+      <Project>{DD2DD0D7-CC4B-BD77-91BE-C0885C6D9637}</Project>
+      <Name>NavMeshComponentsExamplesEditor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

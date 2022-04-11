@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7786065271310880371}
   - component: {fileID: 9011312850620502110}
   - component: {fileID: 3234105356940858454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 6807334627512302899}
   - component: {fileID: 1582948193647380912}
   - component: {fileID: 6216669815452224540}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 6938928517165487861}
   - component: {fileID: 1951764354199074584}
   - component: {fileID: 6428768964410735394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hand1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 7019708397820070600}
   - component: {fileID: 1616294879184311955}
   - component: {fileID: 3989875954457009443}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 5203661162990911275}
   - component: {fileID: 8005933729866554629}
   - component: {fileID: 1168194077368049560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 1278888820299129388}
   - component: {fileID: 3928471644012033720}
   - component: {fileID: 2228979503550711935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hand2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 2539747152690111404}
   - component: {fileID: 3904285925138038164}
   - component: {fileID: 2411246537631861362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 3316075008496422486}
   - component: {fileID: 8707995486571841302}
   - component: {fileID: 1465752123662176616}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hat2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 6456909591524536431}
   - component: {fileID: 905657847483500658}
   - component: {fileID: 773044114234203190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 8877388876789000925}
   - component: {fileID: 870910161378490252}
   - component: {fileID: 2121327707908930814}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +969,8 @@ GameObject:
   - component: {fileID: -7194543613420660026}
   - component: {fileID: 6618763137638783404}
   - component: {fileID: 3844178139474864637}
-  m_Layer: 0
+  - component: {fileID: -4115073456420424301}
+  m_Layer: 8
   m_Name: human_Inter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,7 +985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9222126918591602358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 6461562295921910975}
@@ -1012,6 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37014ecef249467b85f7b07812cd519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: -4115073456420424301}
   myState: 2
   humanHealth: 0
   humanIntelligence: 0
@@ -1045,3 +1047,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2578733, y: 3.0028834, z: 2.1361074}
   m_Center: {x: -0.035196375, y: 1.4995415, z: -0.008767247}
+--- !u!195 &-4115073456420424301
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9222126918591602358}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.1
+  m_Speed: 3.5
+  m_Acceleration: 1
+  avoidancePriority: 50
+  m_AngularSpeed: 60
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 3
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

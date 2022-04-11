@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4705342170557355835}
   - component: {fileID: 3911802885377657696}
   - component: {fileID: 1691483552380649680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7498676032850453208}
   - component: {fileID: 5709845323277091062}
   - component: {fileID: 3463824519387677291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 9106061397356110016}
   - component: {fileID: 3877734108464026691}
   - component: {fileID: 8530297202301768175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 4642013737113537286}
   - component: {fileID: 4265391568981519083}
   - component: {fileID: 8723519831482640081}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hand1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 8771944785984957852}
   - component: {fileID: 3221819058610787713}
   - component: {fileID: 3070856640161513925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 6563269097979377454}
   - component: {fileID: 3184502830939957887}
   - component: {fileID: 4420212738706514189}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,8 @@ GameObject:
   - component: {fileID: 319191163566410106}
   - component: {fileID: 1252571754836669720}
   - component: {fileID: 5982047831768333359}
-  m_Layer: 0
+  - component: {fileID: -8214770615697284342}
+  m_Layer: 8
   m_Name: human_Junior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6907444087819895621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 8758284059863644492}
@@ -627,6 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc802bcdc74544adfabf920a6f4771da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: -8214770615697284342}
   myState: 2
   humanHealth: 0
   humanIntelligence: 0
@@ -660,6 +662,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8301668, y: 3.013153, z: 1.7679038}
   m_Center: {x: -0.020754337, y: 1.504676, z: -0.031131336}
+--- !u!195 &-8214770615697284342
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907444087819895621}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.1
+  m_Speed: 3.5
+  m_Acceleration: 1
+  avoidancePriority: 50
+  m_AngularSpeed: 60
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 3
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7575490861534863791
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +696,7 @@ GameObject:
   - component: {fileID: 3573675322723090399}
   - component: {fileID: 1631152420053642059}
   - component: {fileID: 4524241112027403660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hand2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +791,7 @@ GameObject:
   - component: {fileID: 223287493942820447}
   - component: {fileID: 1587931195661885543}
   - component: {fileID: 95085413200877441}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

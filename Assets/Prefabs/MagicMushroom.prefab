@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7065604258733380288}
   - component: {fileID: 7065604258733380351}
   - component: {fileID: 7065604258733380350}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 7065604259069737679}
   - component: {fileID: 7065604259069737678}
   - component: {fileID: 7065604259069737677}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MagicMushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

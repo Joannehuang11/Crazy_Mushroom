@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class treeManager : MonoBehaviour
 {
@@ -26,11 +27,15 @@ public class treeManager : MonoBehaviour
     humanBrain2[] interHuman;
     humanBrain3[] proHuman;
 
+    public NavMeshSurface surface;
+
+    public int isSun = 1;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        initiateSite();
+        initiateSiteOnSun();
     }
 
     // Update is called once per frame
@@ -41,9 +46,21 @@ public class treeManager : MonoBehaviour
 
     public void reInitiateSite()
     {
-        clearOriginal();
-        initiateSite();
-        resetHumanMushList();
+        if ( isSun == 1)
+        {
+            clearOriginal();
+            initiateSiteOnSun();
+            resetHumanMushList();
+            surface.BuildNavMesh();
+        }
+
+        if (isSun !=1)
+        {
+            clearOriginal();
+            initiateSiteOnRain();
+            resetHumanMushList();
+            surface.BuildNavMesh();
+        }
     }
 
     public void mushOnSunny()
@@ -51,6 +68,7 @@ public class treeManager : MonoBehaviour
         clearOriginalMush();
         instantiateMushroomsAroundsRuin();
         resetHumanMushList();
+        isSun = 1;
     }
 
     public void mushOnRainy()
@@ -58,9 +76,10 @@ public class treeManager : MonoBehaviour
         clearOriginalMush();
         instantiateMushroomsAroundTrees();
         resetHumanMushList();
+        isSun = 0;
     }
 
-    public void initiateSite()
+    public void initiateSiteOnSun()
     {
         allRuins = new List<GameObject>();
         allTree = new List<GameObject>();
@@ -70,6 +89,20 @@ public class treeManager : MonoBehaviour
         initiateTree3();
         initiateRuins();
         instantiateMushroomsAroundsRuin();
+        surface.BuildNavMesh();
+    }
+
+    public void initiateSiteOnRain()
+    {
+        allRuins = new List<GameObject>();
+        allTree = new List<GameObject>();
+        allMush = new List<GameObject>();
+        initiateTree1();
+        initiateTree2();
+        initiateTree3();
+        initiateRuins();
+        instantiateMushroomsAroundTrees();
+        surface.BuildNavMesh();
     }
 
     void clearOriginal()

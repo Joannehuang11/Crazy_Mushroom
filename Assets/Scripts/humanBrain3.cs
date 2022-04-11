@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class humanBrain3 : MonoBehaviour
 {
+    public NavMeshAgent agent;
+
     public enum State
     {
         HungrySearchFood,
@@ -44,7 +47,7 @@ public class humanBrain3 : MonoBehaviour
         transform.Rotate(new Vector3(0, randRotation, 0));
 
         //randomize how many seteps to take before rotation
-        randTimeToRotate = 500;
+        randTimeToRotate = Random.Range(300, 500);
         //randTimeToRotate = Random.Range(50, 500);
 
         //randomize speed
@@ -61,6 +64,9 @@ public class humanBrain3 : MonoBehaviour
 
         allMagicMush = FindObjectsOfType<magicBrain>();
         //Debug.Log("FindAllMagic");
+
+        agent.speed = 3 * timeSpeed;
+        agent.SetDestination(RandomNavMeshLocation());
     }
 
     // Update is called once per frame
@@ -68,13 +74,12 @@ public class humanBrain3 : MonoBehaviour
     {
         count += 1 * timeSpeed;
         stayWithinBounds();
-        transform.Rotate(Vector3.up, 2*count, Space.Self);
-
 
         if (myState == State.Wander)
         {
-            move(1);
-            turnOverTime(1);
+            //move(1);
+            //turnOverTime(1);
+            wander();
             consumeEnergy();
             findClosestPoisonMush();
 
@@ -132,20 +137,20 @@ public class humanBrain3 : MonoBehaviour
         }
         else if (myState == State.Die)
         {
-            move(0);
-            turnOverTime(0);
+            //move(0);
+            //turnOverTime(0);
         }
 
     }
 
     //function
-    void OnCollisionEnter(Collision collision)
-    {
-        randRotation = Random.Range(-60.0f, 60.0f);
-        transform.Rotate(new Vector3(0, randRotation, 0));
-        Debug.Log("hit !");
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    randRotation = Random.Range(-60.0f, 60.0f);
+    //    transform.Rotate(new Vector3(0, randRotation, 0));
+    //    Debug.Log("hit !");
 
-    }
+    //}
 
     public void resetMush()
     {
@@ -253,12 +258,16 @@ public class humanBrain3 : MonoBehaviour
 
     void moveToClosestPoison()
     {
-        Vector3 p1 = transform.position;
-        Vector3 p2 = allPoisonMush[closetPoisonId].transform.position;
-        Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
+        //Vector3 p1 = transform.position;
+        //Vector3 p2 = allPoisonMush[closetPoisonId].transform.position;
+        //Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
 
-        transform.LookAt(p2Flat);
-        move(1);
+        //transform.LookAt(p2Flat);
+        //move(1);
+
+        agent.SetDestination(allPoisonMush[closetPoisonId].transform.position);
+        agent.speed = 5 * timeSpeed;
+
 
         //Debug.Log("MoveToClosestMagic");
 
@@ -304,13 +313,18 @@ public class humanBrain3 : MonoBehaviour
 
     void moveToClosestMagic()
     {
-        Vector3 p1 = transform.position;
-        Vector3 p2 = allMagicMush[closetMagicId].transform.position;
-        Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
+        //Vector3 p1 = transform.position;
+        //Vector3 p2 = allMagicMush[closetMagicId].transform.position;
+        //Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
 
-        transform.LookAt(p2Flat);
-        move(1);
-        spin(20);
+        //transform.LookAt(p2Flat);
+        //move(1);
+
+        agent.SetDestination(allMagicMush[closetMagicId].transform.position);
+        agent.speed = 5 * timeSpeed;
+
+
+        //spin(20);
 
         if (humanHealth < 90)
         {
@@ -363,12 +377,15 @@ public class humanBrain3 : MonoBehaviour
 
     void moveToClosestFood()
     {
-        Vector3 p1 = transform.position;
-        Vector3 p2 = allFoodMush[closetFoodId].transform.position;
-        Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
+        //Vector3 p1 = transform.position;
+        //Vector3 p2 = allFoodMush[closetFoodId].transform.position;
+        //Vector3 p2Flat = new Vector3(p2.x, p1.y, p2.z);
 
-        transform.LookAt(p2Flat);
-        move(5);
+        //transform.LookAt(p2Flat);
+        //move(5);
+
+        agent.SetDestination(allFoodMush[closetFoodId].transform.position);
+        agent.speed = 10 * timeSpeed;
 
         //Debug.Log("MoveToClosestFood");
         //Debug.DrawLine(p1, p2, Color.red);
@@ -411,25 +428,51 @@ public class humanBrain3 : MonoBehaviour
         }
     }
 
-    void turnOverTime(float multiplier)
+    void wander()
     {
+        agent.speed = 3 * timeSpeed;
         int countMove = 0;
-        countMove += 2 * timeSpeed;
+        countMove++;
 
-        if (countMove * multiplier > randTimeToRotate)
+        if (countMove > 500 || agent.remainingDistance <= agent.stoppingDistance)
         {
-            //rotate in a random orientation
-            randRotation = Random.Range(-60.0f, 60.0f);
-            transform.Rotate(new Vector3(0, randRotation, 0));
-            // Vector3.forward: global vector
+            agent.SetDestination(RandomNavMeshLocation());
             countMove = 0;
         }
     }
 
-    void move(float multiplier)
+    public Vector3 RandomNavMeshLocation()
     {
-        transform.position += (transform.forward * randSpeed * timeSpeed * multiplier);
+        int walkRadius = 20;
+        Vector3 finalPosition = Vector3.zero;
+        Vector3 randomPosition = Random.insideUnitSphere * walkRadius;
+        randomPosition += transform.position;
+
+        if (NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, walkRadius, 1))
+        {
+            finalPosition = hit.position;
+        }
+        return finalPosition;
     }
+
+    //void turnOverTime(float multiplier)
+    //{
+    //    int countMove = 0;
+    //    countMove += timeSpeed*2;
+    //    if (countMove * multiplier > randTimeToRotate)
+    //    {
+    //        //rotate in a random orientation
+    //        randRotation = Random.Range(-60.0f, 60.0f);
+    //        transform.Rotate(new Vector3(0, randRotation, 0));
+    //        // Vector3.forward: global vector
+    //        countMove = 0;
+    //    }
+    //}
+
+    //void move(float multiplier)
+    //{
+    //    transform.position += (transform.forward * randSpeed * timeSpeed * multiplier);
+    //}
 
     void spin(float rot)
     {
