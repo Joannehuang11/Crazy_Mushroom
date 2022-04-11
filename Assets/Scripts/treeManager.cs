@@ -51,27 +51,28 @@ public class treeManager : MonoBehaviour
         instantiateMushroomsAroundRuins();
     }
 
-    public void reInitiateSite()
+    void clearOriginal()
     {
         for (int i = 0; i < allRuins.Count; i++)
         {
-            Destroy(allRuins[i]);
-        }
+            allRuins[i].SetActive(false);
+        };
 
         for (int i = 0; i < allTree.Count; i++)
         {
-            Destroy(allTree[i]);
-        }
+            allTree[i].SetActive(false);
+        };
 
         for (int i = 0; i < allMush.Count; i++)
         {
-            Destroy(allMush[i]);
-        }
+            allMush[i].SetActive(false);
+        };
+    }
 
-        allRuins.Clear();
-        allTree.Clear();
-        allMush.Clear();
+    public void reInitiateSite()
+    {
 
+        clearOriginal();
         initiateSite();
 
         juniorHuman = FindObjectsOfType<humanBrain1>();
@@ -81,17 +82,17 @@ public class treeManager : MonoBehaviour
         for (int i = 0; i < juniorHuman.Length; i++)
         {
             juniorHuman[i].GetComponent<humanBrain1>().resetMush();
-        }
+        };
 
         for (int i = 0; i < interHuman.Length; i++)
         {
             interHuman[i].GetComponent<humanBrain2>().resetMush();
-        }
+        };
 
         for (int i = 0; i < proHuman.Length; i++)
         {
             proHuman[i].GetComponent<humanBrain3>().resetMush();
-        }
+        };
 
     }
 
