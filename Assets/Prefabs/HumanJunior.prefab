@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 8082995220294154313}
   - component: {fileID: 8082995220294154312}
   - component: {fileID: 8082995220294154315}
-  - component: {fileID: -5708017562929790845}
+  - component: {fileID: 6600707433310613819}
   m_Layer: 0
   m_Name: HumanJunior
   m_TagString: Untagged
@@ -388,7 +388,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &-5708017562929790845
+--- !u!114 &6600707433310613819
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8082995220294154314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e37014ecef249467b85f7b07812cd519, type: 3}
+  m_Script: {fileID: 11500000, guid: dc802bcdc74544adfabf920a6f4771da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myState: 2

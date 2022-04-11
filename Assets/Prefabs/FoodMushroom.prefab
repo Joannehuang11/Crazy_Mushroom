@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05e56381e433e84e942d3aab732dc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 30
   timeToReborn: 2000
   count: 0
   FoodMushroomObject: {fileID: 201865120747472202}

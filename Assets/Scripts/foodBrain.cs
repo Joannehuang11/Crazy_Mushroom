@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class foodBrain : MonoBehaviour
 {
-    public float health = 10;
+    public float health = 60;
     public float timeToReborn = 2000;
     public int count = 0;
     public GameObject FoodMushroomObject;

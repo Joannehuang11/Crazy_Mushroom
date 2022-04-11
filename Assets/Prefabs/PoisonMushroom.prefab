@@ -974,7 +974,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26843c5933fd3ea4b9593be8a672da51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: -50
+  health: -20
+  timeToReborn: 2000
+  count: 0
   PoisonMushroomObject: {fileID: 3531260815025974521}
 --- !u!1 &3531260815072294083
 GameObject:

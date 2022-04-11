@@ -5,7 +5,7 @@ using UnityEngine;
 public class magicBrain : MonoBehaviour
 {
     public float health = 10;
-    public float timeToReborn = 2000;
+    public float timeToReborn = 4000;
     public int count = 0;
     public GameObject MagicMushObject;
 

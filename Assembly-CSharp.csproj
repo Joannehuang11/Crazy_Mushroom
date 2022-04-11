@@ -48,8 +48,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\humanManager.cs" />
+     <Compile Include="Assets\Scripts\humanBrain1.cs" />
      <Compile Include="Assets\Scripts\mushroomManager.cs" />
-     <Compile Include="Assets\Scripts\humanBrainDumb.cs" />
+     <Compile Include="Assets\Scripts\humanBrain3.cs" />
      <Compile Include="Assets\Scripts\treeManager.cs" />
      <Compile Include="Assets\Scripts\foodBrain.cs" />
      <Compile Include="Assets\Scripts\UI_Manager.cs" />

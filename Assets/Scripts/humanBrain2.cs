@@ -47,7 +47,7 @@ public class humanBrain2 : MonoBehaviour
         randSpeed = Random.Range(0.005f, 0.01f);
 
         //randomize humanHealth
-        humanHealth = Random.Range(30.0f, 90.0f);
+        humanHealth = Random.Range(70.0f, 90.0f);
 
         allFoodMush = FindObjectsOfType<foodBrain>();
         //Debug.Log("FindAllFood");
@@ -63,7 +63,6 @@ public class humanBrain2 : MonoBehaviour
     void Update()
     {
         stayWithinBounds();
-        //reborn();
 
         if (myState == State.Wander)
         {
@@ -196,7 +195,7 @@ public class humanBrain2 : MonoBehaviour
                 transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(219/225f, 78/225f, 78/225f);
             };
         }
-        else if (humanHealth < 30 && humanHealth > 0)
+        else if (humanHealth < 50 && humanHealth > 0)
         {
             myState = State.HungrySearchFood;
             GetComponent<Renderer>().material.color = new Color(255 / 225f, 204 / 225f, 0 / 225f);
@@ -205,7 +204,7 @@ public class humanBrain2 : MonoBehaviour
                 transform.GetChild(i).GetComponent<Renderer>().material.color = new Color(255 / 225f, 204 / 225f, 0 / 225f);
             };
         }
-        else if (humanHealth > 29 && humanHealth < 90)
+        else if (humanHealth > 49 && humanHealth < 90)
         {
             myState = State.Wander;
             GetComponent<Renderer>().material.color = new Color(200 / 225f, 200 / 225f, 200 / 225f);
@@ -279,29 +278,9 @@ public class humanBrain2 : MonoBehaviour
         closetFoodId = closestId;
     }
 
-    void reborn()
-    {
-        if (humanHealth < 1)
-        {
-            count++;
-        }
-
-        if (count > timeToReborn && humanHealth < 1)
-        {
-            humanHealth = 80;
-            this.GetComponent<MeshRenderer>().enabled = true;
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                transform.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
-            }
-            count = 0;
-        }
-
-    }
-
     void consumeEnergy()
     {
-        humanHealth -= 0.1f;
+        humanHealth -= 0.01f;
     }
 
     void stayWithinBounds()

@@ -95,17 +95,17 @@ public class humanManager : MonoBehaviour
         if (humanIQ > 70)
         {
             initiateHuman_Born_Pro();
-            Debug.Log("Pro");
+            //Debug.Log("Pro");
         }
         if (humanIQ < 30)
         {
             initiateHuman_Born_Junior();
-            Debug.Log("Junior");
+            //Debug.Log("Junior");
         }
         if (humanIQ < 71 && humanIQ > 29)
         {
             initiateHuman_Born_Inter();
-            Debug.Log("Inter");
+            //Debug.Log("Inter");
         }
         totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
     }
@@ -119,17 +119,17 @@ public class humanManager : MonoBehaviour
             if (humanIQ > 70)
             {
                 initiateHuman_Born_Pro();
-                Debug.Log("Pro");
+                //Debug.Log("Pro");
             }
             if (humanIQ < 30)
             {
                 initiateHuman_Born_Junior();
-                Debug.Log("Junior");
+                //Debug.Log("Junior");
             }
             if (humanIQ < 71 && humanIQ > 29)
             {
                 initiateHuman_Born_Inter();
-                Debug.Log("Inter");
+                //Debug.Log("Inter");
             }
             count = 0;
         }
@@ -143,7 +143,7 @@ public class humanManager : MonoBehaviour
         Vector3 pos = new Vector3(randX, 0.25f, randZ);
         GameObject newHumanJunior = Instantiate(HumanJunior, pos, Quaternion.identity);
         newHumanJunior.name = "HumanJunior" + numJun;
-        newHumanJunior.GetComponent<humanBrain2>().humanIntelligence = humanIQ;
+        newHumanJunior.GetComponent<humanBrain1>().humanIntelligence = humanIQ;
         numJun = numJun + 1;
 
         junior_list.Add(newHumanJunior);
@@ -169,8 +169,7 @@ public class humanManager : MonoBehaviour
         Vector3 pos = new Vector3(randX, 0.25f, randZ);
         GameObject newHumanPro = Instantiate(HumanPro, pos, Quaternion.identity);
         newHumanPro.name = "HumanPro" + numPro;
-        newHumanPro.GetComponent<humanBrain2>().humanIntelligence = humanIQ;
-        numPro = numPro + 1;
+        newHumanPro.GetComponent<humanBrain3>().humanIntelligence = humanIQ;
 
         pro_list.Add(newHumanPro);
     }
@@ -180,9 +179,9 @@ public class humanManager : MonoBehaviour
 
         for (int i = 0; i < pro_list.Count; i++)
         {
-            if (pro_list[i].GetComponent<humanBrain2>().humanHealth < minHealth)
+            if (pro_list[i].GetComponent<humanBrain3>().humanHealth < minHealth)
             {
-                minHealth = pro_list[i].GetComponent<humanBrain2>().humanHealth;
+                minHealth = pro_list[i].GetComponent<humanBrain3>().humanHealth;
             }
         }
 
@@ -196,9 +195,9 @@ public class humanManager : MonoBehaviour
 
         for (int i = 0; i < junior_list.Count; i++)
         {
-            if (junior_list[i].GetComponent<humanBrain2>().humanHealth < minHealth)
+            if (junior_list[i].GetComponent<humanBrain1>().humanHealth < minHealth)
             {
-                minHealth = junior_list[i].GetComponent<humanBrain2>().humanHealth;
+                minHealth = junior_list[i].GetComponent<humanBrain1>().humanHealth;
             }
         }
     }
@@ -211,7 +210,7 @@ public class humanManager : MonoBehaviour
 
         for (int i = 0; i < pro_list.Count; i++)
         {
-            if (pro_list[i].GetComponent<humanBrain2>().myState == humanBrain2.State.Die)
+            if (pro_list[i].GetComponent<humanBrain3>().myState == humanBrain3.State.Die)
             {
                 dieID_Pro = i;
                 pro_list.RemoveAt(dieID_Pro);
@@ -233,7 +232,7 @@ public class humanManager : MonoBehaviour
 
         for (int i = 0; i < junior_list.Count; i++)
         {
-            if (junior_list[i].GetComponent<humanBrain2>().myState == humanBrain2.State.Die)
+            if (junior_list[i].GetComponent<humanBrain1>().myState == humanBrain1.State.Die)
             {
                 dieID_Junior = i;
                 junior_list.RemoveAt(dieID_Junior);
