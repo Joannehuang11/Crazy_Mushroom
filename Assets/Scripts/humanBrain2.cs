@@ -23,6 +23,8 @@ public class humanBrain2 : MonoBehaviour
     float randSpeed;
     float count = 0;
     int timeToReborn = 2000;
+    public int timeSpeed = 1;
+
 
     int closetFoodId = -1;
     int closetMagicId = -1;
@@ -62,6 +64,7 @@ public class humanBrain2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        count += 1 * timeSpeed;
         stayWithinBounds();
 
         if (myState == State.Wander)
@@ -125,6 +128,12 @@ public class humanBrain2 : MonoBehaviour
         transform.Rotate(new Vector3(0, randRotation, 0));
     }
 
+    public void resetMush()
+    {
+        allFoodMush = FindObjectsOfType<foodBrain>();
+        allPoisonMush = FindObjectsOfType<poisonBrain>();
+        allMagicMush = FindObjectsOfType<magicBrain>();
+    }
 
     void eatMagicMush()
     {
@@ -299,8 +308,10 @@ public class humanBrain2 : MonoBehaviour
 
     void turnOverTime(float multiplier)
     {
-        count++;
-        if (count * multiplier > randTimeToRotate)
+        int countMove = 0;
+        countMove += 1 * timeSpeed;
+
+        if (countMove * multiplier > randTimeToRotate)
         {
             //rotate in a random orientation
             randRotation = Random.Range(-60.0f, 60.0f);
@@ -312,8 +323,10 @@ public class humanBrain2 : MonoBehaviour
 
     void move(float multiplier, float rot)
     {
-        count++;
-        transform.position += (transform.forward * randSpeed * multiplier);
-        transform.Rotate(0, rot * count, 0);
+        int countMove = 0;
+        countMove += 1 * timeSpeed;
+
+        transform.position += (transform.forward * randSpeed * timeSpeed * multiplier);
+        transform.Rotate(0, rot * countMove, 0);
     }
 }

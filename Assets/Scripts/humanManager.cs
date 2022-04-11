@@ -16,6 +16,7 @@ public class humanManager : MonoBehaviour
     public int count = 0;
     int countDay = 0;
     public float minHealth = 999;
+    public int timeSpeed = 1;
 
     float humanIQ;
 
@@ -46,13 +47,14 @@ public class humanManager : MonoBehaviour
     void Start()
     {
         initiateHuman_Start();
+        timeSpeed = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        count++;
-        countDay++;
+        count += 1 * timeSpeed;
+        countDay += 1 * timeSpeed;
 
         printPopulation();
         printJuniorNum();
@@ -92,7 +94,7 @@ public class humanManager : MonoBehaviour
 
     void printDayNum()
     {
-        float day = countDay;
+        float day = Mathf.Floor(countDay/5000);
         DayString = day + "";
         textElementDayNum.text = DayString;
     }

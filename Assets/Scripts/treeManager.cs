@@ -19,12 +19,26 @@ public class treeManager : MonoBehaviour
     public GameObject MagicMushroomObject;
 
     public List<GameObject> allRuins;
+    public List<GameObject> allTree;
+    public List<GameObject> allMush;
 
     // Start is called before the first frame update
     void Start()
     {
-        allRuins = new List<GameObject>();
+        initiateSite();
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void initiateSite()
+    {
+        allRuins = new List<GameObject>();
+        allTree = new List<GameObject>();
+        allMush = new List<GameObject>();
         initiateTree1();
         initiateTree2();
         initiateTree3();
@@ -32,10 +46,28 @@ public class treeManager : MonoBehaviour
         instantiateMushroomsAroundRuins();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void reInitiateSite()
     {
-        
+        for (int i = 0; i < allRuins.Count; i++)
+        {
+            Destroy(allRuins[i]);
+        }
+
+        for (int i = 0; i < allTree.Count; i++)
+        {
+            Destroy(allTree[i]);
+        }
+
+        for (int i = 0; i < allMush.Count; i++)
+        {
+            Destroy(allMush[i]);
+        }
+
+        allRuins.Clear();
+        allTree.Clear();
+        allMush.Clear();
+
+        initiateSite();
     }
 
     void initiateRuins()
@@ -66,6 +98,9 @@ public class treeManager : MonoBehaviour
             rot.eulerAngles = new Vector3(0, 0, 0);
             GameObject newTree = Instantiate(Tree1Object, pos, rot);
             newTree.name = "Tree" + i;
+
+            allTree.Add(newTree);
+
         }
     }
 
@@ -80,6 +115,8 @@ public class treeManager : MonoBehaviour
             rot.eulerAngles = new Vector3(0, 0, 0);
             GameObject newTree = Instantiate(Tree2Object, pos, rot);
             newTree.name = "Tree" + i;
+
+            allTree.Add(newTree);
         }
     }
 
@@ -94,6 +131,8 @@ public class treeManager : MonoBehaviour
             rot.eulerAngles = new Vector3(0, 0, 0);
             GameObject newTree = Instantiate(Tree3Object, pos, rot);
             newTree.name = "Tree" + i;
+
+            allTree.Add(newTree);
         }
     }
 
@@ -112,6 +151,8 @@ public class treeManager : MonoBehaviour
                 //transform.position = new Vector3(xz.x, .5f, xz.z);
                 GameObject newFoodMush = Instantiate(FoodMushroomObject, xz, rot);
                 newFoodMush.name = "FoodMush" + i;
+
+                allMush.Add(newFoodMush);
             }
 
             for (int k = 0; k < howManyPoisonMushrooms; k++)
@@ -125,6 +166,8 @@ public class treeManager : MonoBehaviour
                 //transform.position = new Vector3(xz.x, .5f, xz.z);
                 GameObject newPoisonMush = Instantiate(PoisonMushroomObject, xz, rot);
                 newPoisonMush.name = "PoisonMush" + i;
+
+                allMush.Add(newPoisonMush);
             }
 
             for (int l = 0; l < howManyMagicMushrooms; l++)
@@ -138,6 +181,8 @@ public class treeManager : MonoBehaviour
                 //transform.position = new Vector3(xz.x, .5f, xz.z);
                 GameObject newMagicMush = Instantiate(MagicMushroomObject, xz, rot);
                 newMagicMush.name = "MagicMush" + i;
+
+                allMush.Add(newMagicMush);
             }
         }
     }

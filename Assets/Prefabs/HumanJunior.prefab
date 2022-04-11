@@ -403,6 +403,7 @@ MonoBehaviour:
   myState: 2
   humanHealth: 0
   humanIntelligence: 0
+  timeSpeed: 1
 --- !u!1 &8082995220583425553
 GameObject:
   m_ObjectHideFlags: 0

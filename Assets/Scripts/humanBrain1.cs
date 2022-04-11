@@ -23,6 +23,7 @@ public class humanBrain1 : MonoBehaviour
     float randSpeed;
     float count = 0;
     int timeToReborn = 2000;
+    public int timeSpeed = 1;
 
     float closestFoodDist = 100000;
     float closestPoisonDist = 100000;
@@ -65,6 +66,7 @@ public class humanBrain1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        count += 1 * timeSpeed;
         stayWithinBounds();
         //reborn();
 
@@ -129,6 +131,12 @@ public class humanBrain1 : MonoBehaviour
         transform.Rotate(new Vector3(0, randRotation, 0));
     }
 
+    public void resetMush()
+    {
+        allFoodMush = FindObjectsOfType<foodBrain>();
+        allPoisonMush = FindObjectsOfType<poisonBrain>();
+        allMagicMush = FindObjectsOfType<magicBrain>();
+    }
 
     void eatMagicMush()
     {
@@ -251,7 +259,7 @@ public class humanBrain1 : MonoBehaviour
                 humanHealth += allPoisonMush[closestPoisonId].health;
                 allPoisonMush[closestPoisonId].health = 0;
                 changeState();
-                Debug.Log("EatFood");
+                //Debug.Log("EatFood");
             }
         }
         else
@@ -264,7 +272,7 @@ public class humanBrain1 : MonoBehaviour
                 humanHealth += allFoodMush[closestFoodId].health;
                 allFoodMush[closestFoodId].health = 0;
                 changeState();
-                Debug.Log("EatPoison");
+                //Debug.Log("EatPoison");
             }
         }
     }
@@ -279,7 +287,7 @@ public class humanBrain1 : MonoBehaviour
 
             transform.LookAt(p2Flat);
             move(5, 0);
-            Debug.Log("MoveToClosestPoison");
+            //Debug.Log("MoveToClosestPoison");
         }
         else
         {
@@ -289,7 +297,7 @@ public class humanBrain1 : MonoBehaviour
 
             transform.LookAt(p2Flat);
             move(5, 0);
-            Debug.Log("MoveToClosestFood");
+            //Debug.Log("MoveToClosestFood");
         }
 
 
@@ -323,26 +331,6 @@ public class humanBrain1 : MonoBehaviour
         }
     }
 
-    void reborn()
-    {
-        if (humanHealth < 1)
-        {
-            count++;
-        }
-
-        if (count > timeToReborn && humanHealth < 1)
-        {
-            humanHealth = 80;
-            this.GetComponent<MeshRenderer>().enabled = true;
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                transform.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
-            }
-            count = 0;
-        }
-
-    }
-
     void consumeEnergy()
     {
         humanHealth -= 0.01f;
@@ -364,21 +352,23 @@ public class humanBrain1 : MonoBehaviour
 
     void turnOverTime(float multiplier)
     {
-        count++;
-        if (count * multiplier > randTimeToRotate)
+        int countMove = 0;
+        countMove += 1*timeSpeed;
+        if (countMove * multiplier > randTimeToRotate)
         {
             //rotate in a random orientation
             randRotation = Random.Range(-60.0f, 60.0f);
             transform.Rotate(new Vector3(0, randRotation, 0));
             // Vector3.forward: global vector
-            count = 0;
+            countMove = 0;
         }
     }
 
     void move(float multiplier, float rot)
     {
-        count++;
-        transform.position += (transform.forward * randSpeed * multiplier);
-        transform.Rotate(0, rot * count, 0);
+        int countMove = 0;
+        countMove += 1 * timeSpeed;
+        transform.position += (transform.forward * randSpeed * timeSpeed * multiplier);
+        transform.Rotate(0, rot * countMove, 0);
     }
 }

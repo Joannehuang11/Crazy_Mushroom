@@ -8,6 +8,7 @@ public class poisonBrain : MonoBehaviour
     public float timeToReborn = 3000;
     public int count = 0;
     public GameObject PoisonMushroomObject;
+    public int timeSpeed = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class poisonBrain : MonoBehaviour
 
     void reborn()
     {
-        count++;
+        count += 1 * timeSpeed;
         if (count > timeToReborn && health == 0)
         {
             health = -20;
@@ -48,6 +49,5 @@ public class poisonBrain : MonoBehaviour
                 transform.GetChild(i).GetComponent<MeshRenderer>().enabled = false;
             }
         }
-        Debug.Log("PoisonDie");
     }
 }

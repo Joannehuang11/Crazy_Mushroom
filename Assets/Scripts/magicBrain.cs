@@ -8,6 +8,7 @@ public class magicBrain : MonoBehaviour
     public float timeToReborn = 4000;
     public int count = 0;
     public GameObject MagicMushObject;
+    public int timeSpeed = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class magicBrain : MonoBehaviour
     //functions
     void reborn()
     {
-        count++;
+        count += 1 * timeSpeed;
         if (count > timeToReborn && health == 0)
         {
             health = 10;
