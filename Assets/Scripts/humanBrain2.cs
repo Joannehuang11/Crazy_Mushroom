@@ -281,6 +281,11 @@ public class humanBrain2 : MonoBehaviour
         agent.SetDestination(allFoodMush[closetFoodId].transform.position);
         agent.speed = 5 * timeSpeed;
 
+        if (humanHealth < 0)
+        {
+            myState = State.Die;
+        }
+
 
         //Debug.Log("MoveToClosestFood");
         //Debug.DrawLine(p1, p2, Color.red);

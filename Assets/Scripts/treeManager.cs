@@ -88,7 +88,7 @@ public class treeManager : MonoBehaviour
         initiateTree2();
         initiateTree3();
         initiateRuins();
-        instantiateMushroomsAroundsRuin();
+        instantiateMushroomsAroundTrees();
         surface.BuildNavMesh();
     }
 
