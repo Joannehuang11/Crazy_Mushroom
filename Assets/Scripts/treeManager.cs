@@ -44,29 +44,10 @@ public class treeManager : MonoBehaviour
         
     }
 
-    public void reInitiateSite()
-    {
-        if ( isSun == 1)
-        {
-            clearOriginal();
-            initiateSiteOnSun();
-            resetHumanMushList();
-            surface.BuildNavMesh();
-        }
-
-        if ( isSun !=1)
-        {
-            clearOriginal();
-            initiateSiteOnRain();
-            resetHumanMushList();
-            surface.BuildNavMesh();
-        }
-    }
-
     public void mushOnSunny()
     {
         clearOriginalMush();
-        instantiateMushroomsAroundsRuin();
+        initiateSiteOnSun();
         resetHumanMushList();
         isSun = 1;
     }
@@ -74,7 +55,7 @@ public class treeManager : MonoBehaviour
     public void mushOnRainy()
     {
         clearOriginalMush();
-        instantiateMushroomsAroundTrees();
+        initiateSiteOnRain();
         resetHumanMushList();
         isSun = 0;
     }

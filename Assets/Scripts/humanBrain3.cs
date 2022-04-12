@@ -261,7 +261,8 @@ public class humanBrain3 : MonoBehaviour
 
         //transform.LookAt(p2Flat);
         //move(1);
-
+        Debug.Log("closetPoisonId = " + closetPoisonId);
+        Debug.Log("closetPoisonPosition = " + allPoisonMush[closetPoisonId].transform.position);
         agent.SetDestination(allPoisonMush[closetPoisonId].transform.position);
         agent.speed = 1 * timeSpeed;
 

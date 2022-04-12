@@ -319,6 +319,11 @@ public class humanBrain1 : MonoBehaviour
             //Debug.Log("MoveToClosestFood");
         }
 
+        if (humanHealth < 0)
+        {
+            myState = State.Die;
+        }
+
 
         //Debug.DrawLine(p1, p2, Color.red);
     }
