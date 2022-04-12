@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\poisonBrain.cs" />
      <Compile Include="Assets\Scripts\perlinNoiseMap.cs" />
      <Compile Include="Assets\Scripts\descriptionManager.cs" />
+     <Compile Include="Assets\Scripts\descriptionManager2.cs" />
      <None Include="Assets\NavMeshComponents-master\ProjectSettings\ProjectVersion.txt" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
