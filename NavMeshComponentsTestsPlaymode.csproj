@@ -629,11 +629,11 @@
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

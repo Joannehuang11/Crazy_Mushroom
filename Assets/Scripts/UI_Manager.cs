@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class UI_Manager : MonoBehaviour
 {
     public GameObject humanManager;
@@ -39,7 +40,7 @@ void Start()
     {
         if (Input.GetKey("escape"))
         {
-            Application.Quit();
+            SceneManager.LoadScene(0);
         }
     }
     

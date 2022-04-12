@@ -646,11 +646,11 @@
  <Reference Include="mscorlib">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.25f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

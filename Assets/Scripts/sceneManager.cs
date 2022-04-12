@@ -14,7 +14,15 @@ public class sceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        exit();
+    }
+
+    void exit()
+    {
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
     }
 
     public void startGame(int level)
