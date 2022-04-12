@@ -66,6 +66,47 @@ public class humanManager : MonoBehaviour
         initiateHuman_Born();
 
         dieRemoveFromList();
+
+        //initiate by mouse click
+
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    //Vector3 mousePos = Input.mousePosition;
+        //    //Vector3 objectPos = Camera.current.ScreenToWorldPoint(new Vector3(mousePos.x, 0, mousePos.z));
+
+        //    humanIQ = Random.Range(0, 100);
+        //    if (humanIQ > 70)
+        //    {
+        //        GameObject newHumanPro = Instantiate(HumanPro, objectPos, Quaternion.identity);
+        //        newHumanPro.name = "HumanPro" + numPro;
+        //        newHumanPro.GetComponent<humanBrain3>().humanIntelligence = humanIQ;
+        //        newHumanPro.GetComponent<humanBrain3>().timeSpeed = timeSpeed;
+        //        numPro = numPro + 1;
+
+        //        pro_list.Add(newHumanPro);
+        //    }
+        //    if (humanIQ < 30)
+        //    {
+        //        GameObject newHumanJunior = Instantiate(HumanJunior, objectPos, Quaternion.identity);
+        //        newHumanJunior.name = "HumanJunior" + numJun;
+        //        newHumanJunior.GetComponent<humanBrain1>().humanIntelligence = humanIQ;
+        //        newHumanJunior.GetComponent<humanBrain1>().timeSpeed = timeSpeed;
+        //        numJun = numJun + 1;
+
+        //        junior_list.Add(newHumanJunior);
+        //    }
+        //    if (humanIQ < 71 && humanIQ > 29)
+        //    {
+        //        GameObject newHumanInter = Instantiate(HumanInter, objectPos, Quaternion.identity);
+        //        newHumanInter.name = "HumanInter" + numInter;
+        //        newHumanInter.GetComponent<humanBrain2>().humanIntelligence = humanIQ;
+        //        newHumanInter.GetComponent<humanBrain2>().timeSpeed = timeSpeed;
+        //        numInter = numInter + 1;
+
+        //        intermediate_list.Add(newHumanInter);
+        //    }
+        //    totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
+        //}
     }
 
     void printPopulation()
@@ -106,6 +147,28 @@ public class humanManager : MonoBehaviour
         intermediate_list = new List<GameObject>();
         pro_list = new List<GameObject>();
 
+        if (humanIQ > 70)
+        {
+            initiateHuman_Born_Pro();
+            //Debug.Log("Pro");
+        }
+        if (humanIQ < 30)
+        {
+            initiateHuman_Born_Junior();
+            //Debug.Log("Junior");
+        }
+        if (humanIQ < 71 && humanIQ > 29)
+        {
+            initiateHuman_Born_Inter();
+            //Debug.Log("Inter");
+        }
+        totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
+    }
+
+
+    public void initiateHuman_Trigger()
+    {
+        humanIQ = Random.Range(0, 100);
         if (humanIQ > 70)
         {
             initiateHuman_Born_Pro();

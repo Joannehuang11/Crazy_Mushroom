@@ -31,6 +31,9 @@ public class treeManager : MonoBehaviour
 
     public int isSun = 1;
 
+    public int newTree = 0;
+    public int randTreeType;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,10 +47,203 @@ public class treeManager : MonoBehaviour
         
     }
 
+    public void initiateTreeAndMush_Trigger()
+    {
+        newTree = newTree + 1;
+        randTreeType = Random.Range(1, 3);
+        if (randTreeType == 1)
+        {
+            float randX = Random.Range(-20.0f, 2.0f);
+            float randZ = Random.Range(-20.0f, 20.0f);
+            Vector3 pos = new Vector3(randX, 1.0f, randZ);
+            Quaternion rot = Quaternion.identity;
+            rot.eulerAngles = new Vector3(0, 0, 0);
+            GameObject newTree = Instantiate(Tree1Object, pos, rot);
+            newTree.name = "Tree" + newTree;
+
+            allTree.Add(newTree);
+
+            for (int j = 0; j < howManyFoodMushrooms / 5; j++)
+            {
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
+                Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+                Vector3 xz = pos + randomPos;
+
+                Quaternion rotMush = Quaternion.identity;
+                //transform.position = new Vector3(xz.x, .5f, xz.z);
+                GameObject newFoodMush = Instantiate(FoodMushroomObject, xz, rot);
+                newFoodMush.name = "FoodMush_newTree" + newTree + j;
+
+                allMush.Add(newFoodMush);
+            }
+
+            for (int k = 0; k < howManyPoisonMushrooms / 5; k++)
+            {
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
+                Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+                Vector3 xz = pos + randomPos;
+
+                Quaternion rotMush = Quaternion.identity;
+                //transform.position = new Vector3(xz.x, .5f, xz.z);
+                GameObject newPoisonMush = Instantiate(PoisonMushroomObject, xz, rot);
+                newPoisonMush.name = "PoisonMush_newTree" + newTree + k;
+
+                allMush.Add(newPoisonMush);
+            }
+
+            for (int l = 0; l < howManyMagicMushrooms / 5; l++)
+            {
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
+                Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+                Vector3 xz = pos + randomPos;
+
+                Quaternion rotMush = Quaternion.identity;
+                //transform.position = new Vector3(xz.x, .5f, xz.z);
+                GameObject newMagicMush = Instantiate(MagicMushroomObject, xz, rot);
+                newMagicMush.name = "MagicMush_newTree" + newTree + l;
+
+                allMush.Add(newMagicMush);
+            }
+        }
+        else if (randTreeType == 2)
+        {
+            float randX = Random.Range(-20.0f, 2.0f);
+            float randZ = Random.Range(-20.0f, 20.0f);
+            Vector3 pos = new Vector3(randX, 1.0f, randZ);
+            Quaternion rot = Quaternion.identity;
+            rot.eulerAngles = new Vector3(0, 0, 0);
+            GameObject newTree = Instantiate(Tree2Object, pos, rot);
+            newTree.name = "Tree" + newTree;
+
+            allTree.Add(newTree);
+
+            for (int j = 0; j < howManyFoodMushrooms / 5; j++)
+            {
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
+                Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+                Vector3 xz = pos + randomPos;
+
+                Quaternion rotMush = Quaternion.identity;
+                //transform.position = new Vector3(xz.x, .5f, xz.z);
+                GameObject newFoodMush = Instantiate(FoodMushroomObject, xz, rot);
+                newFoodMush.name = "FoodMush_newTree" + newTree + j;
+
+                allMush.Add(newFoodMush);
+            }
+
+            for (int k = 0; k < howManyPoisonMushrooms / 5; k++)
+            {
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
+                Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+                Vector3 xz = pos + randomPos;
+
+                Quaternion rotMush = Quaternion.identity;
+                //transform.position = new Vector3(xz.x, .5f, xz.z);
+                GameObject newPoisonMush = Instantiate(PoisonMushroomObject, xz, rot);
+                newPoisonMush.name = "PoisonMush_newTree" + newTree + k;
+
+                allMush.Add(newPoisonMush);
+            }
+
+            for (int l = 0; l < howManyMagicMushrooms / 5; l++)
+            {
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
+                Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+                Vector3 xz = pos + randomPos;
+
+                Quaternion rotMush = Quaternion.identity;
+                //transform.position = new Vector3(xz.x, .5f, xz.z);
+                GameObject newMagicMush = Instantiate(MagicMushroomObject, xz, rot);
+                newMagicMush.name = "MagicMush_newTree" + newTree + l;
+
+                allMush.Add(newMagicMush);
+            }
+        }
+        else if (randTreeType == 3)
+        {
+            float randX = Random.Range(-20.0f, 2.0f);
+            float randZ = Random.Range(-20.0f, 20.0f);
+            Vector3 pos = new Vector3(randX, 1.0f, randZ);
+            Quaternion rot = Quaternion.identity;
+            rot.eulerAngles = new Vector3(0, 0, 0);
+            GameObject newTree = Instantiate(Tree3Object, pos, rot);
+            newTree.name = "Tree" + newTree;
+
+            allTree.Add(newTree);
+
+            for (int j = 0; j < howManyFoodMushrooms / 5; j++)
+            {
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
+                Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+                Vector3 xz = pos + randomPos;
+
+                Quaternion rotMush = Quaternion.identity;
+                //transform.position = new Vector3(xz.x, .5f, xz.z);
+                GameObject newFoodMush = Instantiate(FoodMushroomObject, xz, rot);
+                newFoodMush.name = "FoodMush_newTree" + newTree + j;
+
+                allMush.Add(newFoodMush);
+            }
+
+            for (int k = 0; k < howManyPoisonMushrooms / 5; k++)
+            {
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
+                Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+                Vector3 xz = pos + randomPos;
+
+                Quaternion rotMush = Quaternion.identity;
+                //transform.position = new Vector3(xz.x, .5f, xz.z);
+                GameObject newPoisonMush = Instantiate(PoisonMushroomObject, xz, rot);
+                newPoisonMush.name = "PoisonMush_newTree" + newTree + k;
+
+                allMush.Add(newPoisonMush);
+            }
+
+            for (int l = 0; l < howManyMagicMushrooms / 5; l++)
+            {
+                float randRadiusX = Random.Range(-2.0f, 2.0f);
+                float randRadiusZ = Random.Range(-2.0f, 2.0f);
+                Vector3 randomPos = new Vector3(randRadiusX, 0, randRadiusZ);
+                Vector3 xz = pos + randomPos;
+
+                Quaternion rotMush = Quaternion.identity;
+                //transform.position = new Vector3(xz.x, .5f, xz.z);
+                GameObject newMagicMush = Instantiate(MagicMushroomObject, xz, rot);
+                newMagicMush.name = "MagicMush_newTree" + newTree + l;
+
+                allMush.Add(newMagicMush);
+            }
+        }
+    }
+
+    public void resetSite()
+    {
+        if ( isSun == 1 )
+        {
+            clearOriginal();
+            initiateSiteOnSun();
+            resetHumanMushList();
+        }
+        else if ( isSun != 1)
+        {
+            clearOriginal();
+            initiateSiteOnRain();
+            resetHumanMushList();
+        }
+    }
+
     public void mushOnSunny()
     {
         clearOriginalMush();
-        initiateSiteOnSun();
+        instantiateMushroomsAroundsRuin();
         resetHumanMushList();
         isSun = 1;
     }
@@ -55,7 +251,7 @@ public class treeManager : MonoBehaviour
     public void mushOnRainy()
     {
         clearOriginalMush();
-        initiateSiteOnRain();
+        instantiateMushroomsAroundTrees();
         resetHumanMushList();
         isSun = 0;
     }
@@ -69,7 +265,7 @@ public class treeManager : MonoBehaviour
         initiateTree2();
         initiateTree3();
         initiateRuins();
-        instantiateMushroomsAroundTrees();
+        instantiateMushroomsAroundsRuin();
         surface.BuildNavMesh();
     }
 
@@ -102,6 +298,8 @@ public class treeManager : MonoBehaviour
         {
             allMush[i].SetActive(false);
         };
+
+        Debug.Log("clearOriginal");
     }
 
     void clearOriginalMush()

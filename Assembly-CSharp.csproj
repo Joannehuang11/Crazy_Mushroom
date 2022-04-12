@@ -48,9 +48,11 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\humanManager.cs" />
+     <Compile Include="Assets\Scripts\sceneManager.cs" />
      <Compile Include="Assets\Scripts\humanBrain1.cs" />
      <Compile Include="Assets\Scripts\mushroomManager.cs" />
      <Compile Include="Assets\Scripts\cameraControl.cs" />
+     <Compile Include="Assets\Scripts\navigationBaker.cs" />
      <Compile Include="Assets\Scripts\humanBrain3.cs" />
      <Compile Include="Assets\Scripts\treeManager.cs" />
      <Compile Include="Assets\Scripts\foodBrain.cs" />
@@ -59,8 +61,6 @@
      <Compile Include="Assets\Scripts\magicBrain.cs" />
      <Compile Include="Assets\Scripts\poisonBrain.cs" />
      <Compile Include="Assets\Scripts\perlinNoiseMap.cs" />
-     <Compile Include="Assets\Scripts\navigationBaker.cs" />
-     <Compile Include="Assets\Scripts\sceneManager.cs" />
      <Compile Include="Assets\Scripts\descriptionManager.cs" />
      <None Include="Assets\NavMeshComponents-master\ProjectSettings\ProjectVersion.txt" />
  <Reference Include="UnityEngine">
@@ -654,8 +654,8 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
- <Reference Include="Unity.PlasticSCM.Editor">
- <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+ <Reference Include="Unity.InputSystem">
+ <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
@@ -663,18 +663,11 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.PlasticSCM.Editor">
+ <HintPath>/Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="NavMeshComponentsExamples.csproj">
-      <Project>{E7D7EF5A-0F84-0E60-1D77-8ECE9394A156}</Project>
-      <Name>NavMeshComponentsExamples</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{D996C036-62D6-196C-E1A9-670D42149FCA}</Project>
-      <Name>NavMeshComponents</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
       <Project>{729AE24C-37CC-C79F-EEC4-F6959FCA138A}</Project>
       <Name>NavMeshComponentsEditor</Name>
@@ -683,6 +676,16 @@
     <ProjectReference Include="NavMeshComponentsExamplesEditor.csproj">
       <Project>{DD2DD0D7-CC4B-BD77-91BE-C0885C6D9637}</Project>
       <Name>NavMeshComponentsExamplesEditor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsExamples.csproj">
+      <Project>{E7D7EF5A-0F84-0E60-1D77-8ECE9394A156}</Project>
+      <Name>NavMeshComponentsExamples</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{D996C036-62D6-196C-E1A9-670D42149FCA}</Project>
+      <Name>NavMeshComponents</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
