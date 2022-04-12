@@ -65,7 +65,7 @@ public class humanBrain1 : MonoBehaviour
         allMagicMush = FindObjectsOfType<magicBrain>();
         //Debug.Log("FindAllMagic");
 
-        agent.speed = 20 * timeSpeed;
+        agent.speed = 2 * timeSpeed;
         agent.SetDestination(RandomNavMeshLocation());
     }
 
@@ -154,7 +154,7 @@ public class humanBrain1 : MonoBehaviour
         Vector3 p1 = transform.position;
         Vector3 p2 = allMagicMush[closetMagicId].transform.position;
         float dist = Vector3.Distance(p1, p2);
-        if (dist < 2)
+        if (dist < 1)
         {
             humanHealth += allMagicMush[closetMagicId].health;
             allMagicMush[closetMagicId].health = 0;
@@ -180,7 +180,7 @@ public class humanBrain1 : MonoBehaviour
         //move(1);
 
         agent.SetDestination(allMagicMush[closetMagicId].transform.position);
-        agent.speed = 10 * timeSpeed;
+        agent.speed = 1 * timeSpeed;
 
         //move(1);
         spin(20);
@@ -267,7 +267,7 @@ public class humanBrain1 : MonoBehaviour
             Vector3 p1 = transform.position;
             Vector3 p2 = allPoisonMush[closestPoisonId].transform.position;
             float dist = Vector3.Distance(p1, p2);
-            if (dist < 2)
+            if (dist < 1)
             {
                 humanHealth += allPoisonMush[closestPoisonId].health;
                 allPoisonMush[closestPoisonId].health = 0;
@@ -280,7 +280,7 @@ public class humanBrain1 : MonoBehaviour
             Vector3 p1 = transform.position;
             Vector3 p2 = allFoodMush[closestFoodId].transform.position;
             float dist = Vector3.Distance(p1, p2);
-            if (dist < 2)
+            if (dist < 1)
             {
                 humanHealth += allFoodMush[closestFoodId].health;
                 allFoodMush[closestFoodId].health = 0;
@@ -300,7 +300,7 @@ public class humanBrain1 : MonoBehaviour
 
             //transform.LookAt(p2Flat);
             agent.SetDestination(allPoisonMush[closestPoisonId].transform.position);
-            agent.speed = 50 * timeSpeed;
+            agent.speed = 5 * timeSpeed;
 
             //move(3);
             //Debug.Log("MoveToClosestPoison");
@@ -313,7 +313,7 @@ public class humanBrain1 : MonoBehaviour
 
             //transform.LookAt(p2Flat);
             agent.SetDestination(allFoodMush[closestFoodId].transform.position);
-            agent.speed = 50 * timeSpeed;
+            agent.speed = 5 * timeSpeed;
 
             //move(3);
             //Debug.Log("MoveToClosestFood");
@@ -371,7 +371,7 @@ public class humanBrain1 : MonoBehaviour
 
     void wander()
     {
-        agent.speed = 20 * timeSpeed;
+        agent.speed = 2 * timeSpeed;
         int countMove = 0;
         countMove++;
 
@@ -384,7 +384,7 @@ public class humanBrain1 : MonoBehaviour
 
     public Vector3 RandomNavMeshLocation()
     {
-        int walkRadius = 20;
+        int walkRadius = 25;
         Vector3 finalPosition = Vector3.zero;
         Vector3 randomPosition = Random.insideUnitSphere * walkRadius;
         randomPosition += transform.position;

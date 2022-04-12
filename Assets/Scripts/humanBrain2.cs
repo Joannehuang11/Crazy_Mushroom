@@ -63,7 +63,7 @@ public class humanBrain2 : MonoBehaviour
         allMagicMush = FindObjectsOfType<magicBrain>();
         //Debug.Log("FindAllMagic");
 
-        agent.speed = 20 * timeSpeed;
+        agent.speed = 2 * timeSpeed;
         agent.SetDestination(RandomNavMeshLocation());
 
     }
@@ -152,7 +152,7 @@ public class humanBrain2 : MonoBehaviour
         Vector3 p1 = transform.position;
         Vector3 p2 = allMagicMush[closetMagicId].transform.position;
         float dist = Vector3.Distance(p1, p2);
-        if (dist < 2)
+        if (dist < 1)
         {
             humanHealth += allMagicMush[closetMagicId].health;
             allMagicMush[closetMagicId].health = 0;
@@ -178,7 +178,7 @@ public class humanBrain2 : MonoBehaviour
         //move(1);
 
         agent.SetDestination(allMagicMush[closetMagicId].transform.position);
-        agent.speed = 10 * timeSpeed;
+        agent.speed = 1 * timeSpeed;
 
         spin(20);
 
@@ -261,7 +261,7 @@ public class humanBrain2 : MonoBehaviour
         Vector3 p1 = transform.position;
         Vector3 p2 = allFoodMush[closetFoodId].transform.position;
         float dist = Vector3.Distance(p1, p2);
-        if (dist < 2)
+        if (dist < 1)
         {
             humanHealth += allFoodMush[closetFoodId].health;
             allFoodMush[closetFoodId].health = 0;
@@ -279,7 +279,7 @@ public class humanBrain2 : MonoBehaviour
         //move(5);
 
         agent.SetDestination(allFoodMush[closetFoodId].transform.position);
-        agent.speed = 50 * timeSpeed;
+        agent.speed = 5 * timeSpeed;
 
 
         //Debug.Log("MoveToClosestFood");
@@ -325,7 +325,7 @@ public class humanBrain2 : MonoBehaviour
 
     void wander()
     {
-        agent.speed = 20 * timeSpeed;
+        agent.speed = 2 * timeSpeed;
         int countMove = 0;
         countMove++;
 
@@ -338,7 +338,7 @@ public class humanBrain2 : MonoBehaviour
 
     public Vector3 RandomNavMeshLocation()
     {
-        int walkRadius = 20;
+        int walkRadius = 25;
         Vector3 finalPosition = Vector3.zero;
         Vector3 randomPosition = Random.insideUnitSphere * walkRadius;
         randomPosition += transform.position;

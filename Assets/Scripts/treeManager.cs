@@ -54,7 +54,7 @@ public class treeManager : MonoBehaviour
             surface.BuildNavMesh();
         }
 
-        if (isSun !=1)
+        if ( isSun !=1)
         {
             clearOriginal();
             initiateSiteOnRain();
@@ -160,7 +160,7 @@ public class treeManager : MonoBehaviour
             float randX = Random.Range(-15.0f, 15.0f);
             float randZ = Random.Range(-15.0f, 15.0f);
             float randRot = Random.Range(-180.0f, 180.0f);
-            Vector3 pos = new Vector3(randX, 1.0f, randZ);
+            Vector3 pos = new Vector3(randX, 0.5f, randZ);
             Quaternion rot = Quaternion.identity;
             rot.eulerAngles = new Vector3(0, randRot, 0);
             GameObject newRuin = Instantiate(RuinsObject, pos, rot);

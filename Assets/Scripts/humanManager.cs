@@ -16,7 +16,7 @@ public class humanManager : MonoBehaviour
     public int count = 0;
     int countDay = 0;
     public float minHealth = 999;
-    public int timeSpeed = 1;
+    public int timeSpeed;
 
     float humanIQ;
 
@@ -46,8 +46,8 @@ public class humanManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initiateHuman_Start();
         timeSpeed = 1;
+        initiateHuman_Start();
     }
 
     // Update is called once per frame
@@ -105,7 +105,6 @@ public class humanManager : MonoBehaviour
         junior_list = new List<GameObject>();
         intermediate_list = new List<GameObject>();
         pro_list = new List<GameObject>();
-
 
         if (humanIQ > 70)
         {
