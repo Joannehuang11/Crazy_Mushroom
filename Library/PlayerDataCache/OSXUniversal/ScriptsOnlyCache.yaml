@@ -1014,4 +1014,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/StarterScene.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: /Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Crazy_Mushroom.app
+  playerPath: /Users/joanne/Desktop/Personal/Learn/UMich/2022 Winter/Arch 509 - game/Crazy_Mushroom/Build/Crazy_Mushroom.app

@@ -11,7 +11,7 @@ public class humanManager : MonoBehaviour
     public GameObject HumanJunior;
     public GameObject HumanInter;
     public GameObject HumanPro;
-    int howManyInitialHumans = 150;
+    int howManyInitialHumans = 1;
     public int totalHumans;
     public int count = 0;
     int countDay = 0;
