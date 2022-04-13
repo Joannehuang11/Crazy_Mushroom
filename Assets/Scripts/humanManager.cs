@@ -11,7 +11,7 @@ public class humanManager : MonoBehaviour
     public GameObject HumanJunior;
     public GameObject HumanInter;
     public GameObject HumanPro;
-    int howManyInitialHumans = 5;
+    int howManyInitialHumans = 150;
     public int totalHumans;
     public int count = 0;
     int countDay = 0;
@@ -142,27 +142,31 @@ public class humanManager : MonoBehaviour
 
     void initiateHuman_Start()
     {
-        int humanIQ = Random.Range(0, 100);
-        junior_list = new List<GameObject>();
-        intermediate_list = new List<GameObject>();
-        pro_list = new List<GameObject>();
+        for (int i = 0; i < howManyInitialHumans; i++)
+        {
+            int humanIQ = Random.Range(0, 100);
+            junior_list = new List<GameObject>();
+            intermediate_list = new List<GameObject>();
+            pro_list = new List<GameObject>();
 
-        if (humanIQ > 70)
-        {
-            initiateHuman_Born_Pro();
-            //Debug.Log("Pro");
+            if (humanIQ > 70)
+            {
+                initiateHuman_Born_Pro();
+                //Debug.Log("Pro");
+            }
+            if (humanIQ < 30)
+            {
+                initiateHuman_Born_Junior();
+                //Debug.Log("Junior");
+            }
+            if (humanIQ < 71 && humanIQ > 29)
+            {
+                initiateHuman_Born_Inter();
+                //Debug.Log("Inter");
+            }
+            totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
         }
-        if (humanIQ < 30)
-        {
-            initiateHuman_Born_Junior();
-            //Debug.Log("Junior");
-        }
-        if (humanIQ < 71 && humanIQ > 29)
-        {
-            initiateHuman_Born_Inter();
-            //Debug.Log("Inter");
-        }
-        totalHumans = junior_list.Count + intermediate_list.Count + pro_list.Count;
+       
     }
 
 

@@ -15,6 +15,8 @@ public class humanBrain1 : MonoBehaviour
         HighSearchMagic,
         MoveToEatMagic,
         Die,
+        CantFindFood,
+        CantFindMagic
     }
 
     public State myState = State.Wander;
@@ -82,10 +84,15 @@ public class humanBrain1 : MonoBehaviour
             //turnOverTime(1);
             agent.SetDestination(RandomNavMeshLocation());
 
-            wander();
+            wander(2);
             consumeEnergy();
 
             changeState();
+
+            if (humanHealth < 1)
+            {
+                myState = State.Die;
+            }
 
             //Debug.Log("Wander!");
         }
@@ -97,6 +104,11 @@ public class humanBrain1 : MonoBehaviour
 
             changeStateIfFindFoodOrPoison();
 
+            if (humanHealth < 1)
+            {
+                myState = State.Die;
+            }
+
             //Debug.Log("Hungry!");
         }
         else if (myState == State.MoveToEatFoodOrPoison)
@@ -104,6 +116,11 @@ public class humanBrain1 : MonoBehaviour
             consumeEnergy();
             moveToClosestFoodOrPoison(); //move(3)
             eatFoodOrPoisonMush(); //check state
+
+            if (humanHealth < 1)
+            {
+                myState = State.Die;
+            }
 
             //Debug.Log("Move to Food!");
         }
@@ -115,6 +132,11 @@ public class humanBrain1 : MonoBehaviour
 
             changeStateIfFindMagic();
 
+            if (humanHealth < 1)
+            {
+                myState = State.Die;
+            }
+
             //Debug.Log("High!");
         }
         else if (myState == State.MoveToEatMagic)
@@ -123,14 +145,64 @@ public class humanBrain1 : MonoBehaviour
             moveToClosestMagic(); //move(2), check state
             eatMagicMush(); //check state
 
+            if (humanHealth < 1)
+            {
+                myState = State.Die;
+            }
+
             //Debug.Log("Move to Magic!");
         }
         else if (myState == State.Die)
         {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).GetComponent<MeshRenderer>().enabled = false;
+            };
+
             //move(0);
             //turnOverTime(0);
         }
+        else if (myState == State.CantFindFood)
+        {
+            agent.SetDestination(RandomNavMeshLocation());
 
+            wander(10);
+            consumeEnergy();
+
+            int countMove = 0;
+            countMove++;
+            if (countMove > 1000)
+            {
+                changeState();
+                countMove = 0;
+            }
+
+            if (humanHealth < 1)
+            {
+                myState = State.Die;
+            }
+        }
+        else if (myState == State.CantFindMagic)
+        {
+            agent.SetDestination(RandomNavMeshLocation());
+
+            wander(2);
+            spin(20);
+            consumeEnergy();
+
+            int countMove = 0;
+            countMove++;
+            if (countMove > 1000)
+            {
+                changeState();
+                countMove = 0;
+            }
+
+            if (humanHealth < 1)
+            {
+                myState = State.Die;
+            }
+        }
     }
 
     //function
@@ -168,6 +240,7 @@ public class humanBrain1 : MonoBehaviour
         {
             myState = State.MoveToEatMagic;
         }
+
     }
 
     void moveToClosestMagic()
@@ -188,6 +261,11 @@ public class humanBrain1 : MonoBehaviour
         if (humanHealth < 90)
         {
             myState = State.Wander;
+        }
+
+        if (allMagicMush[closetMagicId].health == 0)
+        {
+            myState = State.CantFindMagic;
         }
 
         //Debug.Log("MoveToClosestMagic");
@@ -257,6 +335,11 @@ public class humanBrain1 : MonoBehaviour
         {
             myState = State.MoveToEatFoodOrPoison;
         }
+
+        else if (closestFoodId != -1 && closestPoisonId != -1)
+        {
+            myState = State.CantFindFood;
+        }
     }
 
     void eatFoodOrPoisonMush()
@@ -302,6 +385,11 @@ public class humanBrain1 : MonoBehaviour
             agent.SetDestination(allPoisonMush[closestPoisonId].transform.position);
             agent.speed = 5 * timeSpeed;
 
+            if (allPoisonMush[closestPoisonId].health == 0)
+            {
+                myState = State.CantFindFood;
+            }
+
             //move(3);
             //Debug.Log("MoveToClosestPoison");
         }
@@ -315,13 +403,13 @@ public class humanBrain1 : MonoBehaviour
             agent.SetDestination(allFoodMush[closestFoodId].transform.position);
             agent.speed = 5 * timeSpeed;
 
+            if (allFoodMush[closestFoodId].health == 0)
+            {
+                myState = State.CantFindFood;
+            }
+
             //move(3);
             //Debug.Log("MoveToClosestFood");
-        }
-
-        if (humanHealth < 0)
-        {
-            myState = State.Die;
         }
 
 
@@ -357,7 +445,7 @@ public class humanBrain1 : MonoBehaviour
 
     void consumeEnergy()
     {
-        humanHealth -= 0.01f * timeSpeed;
+        humanHealth -= 0.05f * timeSpeed;
     }
 
     void stayWithinBounds()
@@ -374,9 +462,9 @@ public class humanBrain1 : MonoBehaviour
         }
     }
 
-    void wander()
+    void wander(int speed)
     {
-        agent.speed = 2 * timeSpeed;
+        agent.speed = speed * timeSpeed;
         int countMove = 0;
         countMove++;
 
