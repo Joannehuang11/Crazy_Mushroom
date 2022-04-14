@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: 1df8155a0afab4b3b9ee90e3b0d924ea
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cera Pro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 05acece65b3124c009de6ab4ff66a532, type: 3}
+  - {fileID: 12800000, guid: 5219956cc3a4a49b5ba982a242f7ccaf, type: 3}
+  - {fileID: 12800000, guid: 6408d82ba5b5b485f9f6257c24424e59, type: 3}
+  - {fileID: 12800000, guid: 1a6821a8f798147d1b6ec66693633452, type: 3}
+  - {fileID: 12800000, guid: 298354f882312442d83da51baa9d2640, type: 3}
+  - {fileID: 12800000, guid: ab4469525aedf42c7badc491152a4ba0, type: 3}
+  - {fileID: 12800000, guid: f798c81f925d04dcc8eec932ff047e15, type: 3}
+  - {fileID: 12800000, guid: ac02fe0ed20284c1b99368d0ab4c084d, type: 3}
+  - {fileID: 12800000, guid: efe9c13c5cf3f4c99859d2bf2bbed545, type: 3}
+  - {fileID: 12800000, guid: d90e366c427cd43fda099c542ac53707, type: 3}
+  - {fileID: 12800000, guid: f2103bf436c234e5a90a6fd2b91dad6d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

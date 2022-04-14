@@ -52,85 +52,85 @@ public class descriptionManager : MonoBehaviour
         if (frame < 300)
         {
             text1.text = "Junior";
-            text1_des.text = "Might eat poison mushroom";
+            text1_des.text = "Might eat Poison Mush";
             image1.sprite = junHuman;
 
             text2.text = "Intermediate";
-            text2_des.text = "Can avoid poison mushroom";
+            text2_des.text = "Can avoid Poison Mush";
             image2.sprite = intHuman;
 
             text3.text = "Pro";
-            text3_des.text = "Can kill poison mushroom";
+            text3_des.text = "Can kill Poison Mush";
             image3.sprite = proHuman;
         }
         else if (frame > 299 && frame < 600)
         {
             text1.text = "Hungry";
-            text1_des.text = "need foodmush immediately";
+            text1_des.text = "Need food immediately";
             image1.sprite = hungryHuman;
 
             text2.text = "Normal";
-            text2_des.text = "wandering";
+            text2_des.text = "Enjoying life";
             image2.sprite = junHuman;
 
             text3.text = "Too high";
-            text3_des.text = "after eating magic mushroom";
+            text3_des.text = "Get high and crazy";
             image3.sprite = magicHuman;
         }
         else if (frame > 599 && frame < 900)
         {
             text1.text = "Food Mush";
-            text1_des.text = "increase health";
+            text1_des.text = "Eat will increase health";
             image1.sprite = foodMush;
 
             text2.text = "Poison Mush";
-            text2_des.text = "human's health drop";
+            text2_des.text = "Eat will harm health";
             image2.sprite = poisonMush;
 
             text3.text = "Magic Mush";
-            text3_des.text = "Start to spin";
+            text3_des.text = "Eat will turn crazy";
             image3.sprite = magicMush;
         }
         else if (frame > 899 && frame < 1200)
         {
             text1.text = "Junior";
-            text1_des.text = "Might eat poison mushroom";
+            text1_des.text = "Might eat Poison Mush";
             image1.sprite = junHuman;
 
             text2.text = "Intermediate";
-            text2_des.text = "Can avoid poison mushroom";
+            text2_des.text = "Can avoid Poison Mush";
             image2.sprite = intHuman;
 
             text3.text = "Pro";
-            text3_des.text = "Can kill poison mushroom";
+            text3_des.text = "Can kill Poison Mush";
             image3.sprite = proHuman;
         }
         else if (frame > 1199 && frame < 1500)
         {
             text1.text = "Hungry";
-            text1_des.text = "need foodmush immediately";
+            text1_des.text = "Need food immediately";
             image1.sprite = hungryHuman;
 
             text2.text = "Normal";
-            text2_des.text = "wandering";
+            text2_des.text = "Enjoying life";
             image2.sprite = junHuman;
 
             text3.text = "Too high";
-            text3_des.text = "after eating magic mushroom";
+            text3_des.text = "Get high and crazy";
             image3.sprite = magicHuman;
         }
         else if (frame > 1499 && frame < 1800)
         {
             text1.text = "Food Mush";
-            text1_des.text = "increase health";
+            text1_des.text = "Eat will increase health";
             image1.sprite = foodMush;
 
             text2.text = "Poison Mush";
-            text2_des.text = "human's health drop";
+            text2_des.text = "Eat will harm health";
             image2.sprite = poisonMush;
 
             text3.text = "Magic Mush";
-            text3_des.text = "Start to spin";
+            text3_des.text = "Eat will turn crazy";
             image3.sprite = magicMush;
         }
     }
