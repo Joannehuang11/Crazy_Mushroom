@@ -243,7 +243,7 @@ public class humanBrain3 : MonoBehaviour
         Debug.Log("resetMush3");
     }
 
-    void changeState()
+    public void changeState()
     {
         if (humanHealth > 89)
         {

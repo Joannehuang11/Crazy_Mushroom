@@ -291,7 +291,7 @@ public class humanBrain1 : MonoBehaviour
         closetMagicId = closestId;
     }
 
-    void changeState()
+    public void changeState()
     {
         if (humanHealth > 89)
         {
